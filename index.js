@@ -23,7 +23,7 @@ function showSlides(){
     //style each image div to appear
     //slideIndex is always one extra of length so subtract 1 in
     //the index of slides to prevent errors.
-    slides[slideIndex-1].style.display = "block";
+    slides[slideIndex-1].style.display = "inline-flex";
     
     //key function used to call this function(or any other one)
     //every ms indicated in second parameter. 4000 ms is 4 seconds
