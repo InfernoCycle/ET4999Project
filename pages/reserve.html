@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="./jquery-3.6.3.min.js"></script>
   <script src="./jquery-ui.js"></script>
+
+  <link rel="stylesheet" href="./jquery.timepicker.min.css"></link>
+  <script src="./jquery.timepicker.min.js"></script>
   <!--<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>-->
   
@@ -27,28 +30,33 @@
       <a href="./pages/reserve.html">Reserve</a>
       <a href="#">Link 4</a>
   </nav>
-  <form id="reserve_form">
-    <fieldset>
-      <legend>Reservation</legend>
-      <label>First Name:</label>
-      <input type="text" required="true">
-      <label>Last Name:</label>
-      <input type="text" required="true">
-      
-      <p></p>
+    <form id="reserve_form">
+      <fieldset style="border:none;">
+        <legend style="padding:10px; font-weight: bolder; font-size:25px">Reservation</legend>
+        <label>First Name:</label>
+        <input type="text" required="true">
 
-      <label>Choose Date:</label>
-      <input id="datepicker" type="text">
+        <p class="space"></p>
+        
+        <label>Last Name:</label>
+        <input type="text" required="true">
+        
+        <p class="space"></p>
 
-      <p></p>
+        <label>Choose Date:</label>
+        <input id="datepicker" type="text" readonly>
+
+        <p class="space"></p>
+        
+        <label>Choose Time: </label>
+        <input class="start_time timepicker" type="text" readonly>
+
+        <p class="space"></p>
+
+        <input type="submit" value="Submit">
+      </fieldset>
       
-      <label>Starting at: </label>
-      <input id="start_time" type="text">
-      <label>Ending at: </label>
-      <input id="end_time" type="text">
-    </fieldset>
-    
-  </form>
+    </form>
   <script src="./jquery_funcs.js"></script>
 </body>
 </html>

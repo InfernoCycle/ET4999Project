@@ -29,3 +29,12 @@ function showSlides(){
     //every ms indicated in second parameter. 4000 ms is 4 seconds
     //setTimeout(showSlides, 4000);
 }
+
+function showDate(){
+    var test = document.getElementById("testrun");
+    const date = new Date();
+    //Date.getDay().toString();
+    test.innerHTML = date.getDay();
+}
+
+showDate()

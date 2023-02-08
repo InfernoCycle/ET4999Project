@@ -182,6 +182,17 @@ body{
     }*/
 }
 
+.open_info{
+    text-align: center;
+    background-color: aliceblue;
+    margin:0% 5% 0% 5%;
+}
+
+.open_info p{
+    font-weight: bolder;
+    font-size:25px;
+}
+
 footer{
     margin:0px 5% 0px 5%;
     height:100px;
@@ -189,6 +200,48 @@ footer{
 }
 
 /*----------reservation page----------*/
-#reserve_form{
+
+@media (min-width: 700px){
+    #reserve_form{
+        width:30%;
+        margin:10% auto 10% auto;
+        text-align: center;
+        border:5px solid black;
+        background-color: orange;
+    }
     
+    #reserve_form label{
+        margin-right:1%;
+    }
+    
+    .space{
+        margin:40px 0px 40px 0px;
+    }
+    
+    #reserve_form input{
+        width:50%;
+        padding:5px;
+    }
+}
+@media (max-width: 700px){
+    #reserve_form{
+        width:50%;
+        margin:10% auto 10% auto;
+        text-align: center;
+        border:5px solid black;
+        background-color: orange;
+    }
+    
+    #reserve_form label{
+        margin-right:1%;
+    }
+    
+    .space{
+        margin:40px 0px 40px 0px;
+    }
+    
+    #reserve_form input{
+        width:50%;
+        padding:5px;
+    }
 }
