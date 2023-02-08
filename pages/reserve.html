@@ -6,6 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="../index.css">
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="./jquery-3.6.3.min.js"></script>
+  <script src="./jquery-ui.js"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>-->
+  
+  <!--C:\Users\ecollege\Downloads\jquery-ui-1.13.2.custom\jquery-ui.js-->
 </head>
 <body>
   <header class="header_cont">
@@ -18,8 +27,28 @@
       <a href="./pages/reserve.html">Reserve</a>
       <a href="#">Link 4</a>
   </nav>
-  <form>
+  <form id="reserve_form">
+    <fieldset>
+      <legend>Reservation</legend>
+      <label>First Name:</label>
+      <input type="text" required="true">
+      <label>Last Name:</label>
+      <input type="text" required="true">
+      
+      <p></p>
 
+      <label>Choose Date:</label>
+      <input id="datepicker" type="text">
+
+      <p></p>
+      
+      <label>Starting at: </label>
+      <input id="start_time" type="text">
+      <label>Ending at: </label>
+      <input id="end_time" type="text">
+    </fieldset>
+    
   </form>
+  <script src="./jquery_funcs.js"></script>
 </body>
 </html>
