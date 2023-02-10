@@ -30,26 +30,26 @@
       <a href="./pages/reserve.html">Reserve</a>
       <a href="#">Link 4</a>
   </nav>
-    <form id="reserve_form">
+    <form id="reserve_form" action="http://localhost/LearnPHP/index.php" method="GET">
       <fieldset style="border:none;">
         <legend style="padding:10px; font-weight: bolder; font-size:25px">Reservation</legend>
         <label>First Name:</label>
-        <input type="text" required="true">
+        <input type="text" name="fn" required="true">
 
         <p class="space"></p>
         
         <label>Last Name:</label>
-        <input type="text" required="true">
+        <input type="text" name="ln" required="true">
         
         <p class="space"></p>
 
         <label>Choose Date:</label>
-        <input id="datepicker" type="text" readonly>
+        <input id="datepicker" type="text" name="date" readonly>
 
         <p class="space"></p>
         
         <label>Choose Time: </label>
-        <input class="start_time timepicker" type="text" readonly>
+        <input class="start_time timepicker" type="text" name="time" readonly>
 
         <p class="space"></p>
 
