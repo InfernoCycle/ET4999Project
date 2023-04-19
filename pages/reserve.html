@@ -25,35 +25,45 @@
   </header>
 
   <nav class="nav_cont">
-      <a href="../index.php">Home</a>
-      <a href="#">Link 2</a>
-      <a href="./pages/reserve.php">Reserve</a>
-      <a href="#">Link 4</a>
+      <a href="../index.html">Home</a>
+      <a href="#">Menu</a>
+      <a href="./reserve.html">Reserve</a>
+      <a href="#">About</a>
   </nav>
     <form id="reserve_form" action="./confirmed.php" method="GET">
-      <fieldset style="border:none;">
-        <legend style="padding:10px; font-weight: bolder; font-size:25px">Reservation</legend>
+      <fieldset>
+        <legend style="padding:10px; font-weight: bolder; font-size:35px">Reservation</legend>
         <label>First Name:</label>
+        <p class="innerSpace"></p>
         <input type="text" name="fn" required="true">
 
         <p class="space"></p>
         
         <label>Last Name:</label>
+        <p class="innerSpace"></p>
         <input type="text" name="ln" required="true">
         
         <p class="space"></p>
 
+        <label>Email:</label>
+        <p class="innerSpace"></p>
+        <input type="text" name="email" required="true">
+
+        <p class="space"></p>
+
         <label>Choose Date:</label>
+        <p class="innerSpace"></p>
         <input id="datepicker" type="text" name="date" readonly>
 
         <p class="space"></p>
         
         <label>Choose Time: </label>
+        <p class="innerSpace"></p>
         <input class="start_time timepicker" type="text" name="time" readonly>
 
         <p class="space"></p>
 
-        <input type="submit" value="Submit">
+        <button type="submit" value="Submit">Submit</button>
       </fieldset>
       
     </form>
