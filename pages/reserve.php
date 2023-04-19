@@ -25,9 +25,9 @@
   </header>
 
   <nav class="nav_cont">
-      <a href="../index.html">Home</a>
+      <a href="../index.php">Home</a>
       <a href="#">Link 2</a>
-      <a href="./pages/reserve.html">Reserve</a>
+      <a href="./pages/reserve.php">Reserve</a>
       <a href="#">Link 4</a>
   </nav>
     <form id="reserve_form" action="http://localhost/LearnPHP/index.php" method="GET">
