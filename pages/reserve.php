@@ -30,7 +30,7 @@
       <a href="./pages/reserve.php">Reserve</a>
       <a href="#">Link 4</a>
   </nav>
-    <form id="reserve_form" action="http://localhost/LearnPHP/index.php" method="GET">
+    <form id="reserve_form" action="./confirmed.php" method="GET">
       <fieldset style="border:none;">
         <legend style="padding:10px; font-weight: bolder; font-size:25px">Reservation</legend>
         <label>First Name:</label>
