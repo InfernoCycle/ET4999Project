@@ -62,10 +62,40 @@ body{
     margin-top: 0px;
     margin-left: auto;
     margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     /*background-color: lightgrey;
     margin:0px 5% 0px 5%;*/
 }
 
+.pageLink_btn{
+    cursor:pointer;
+    width:30%;
+    background-color: black;
+    line-height: 50px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    color: white;
+    font-size: larger;
+    font-family: 'Times New Roman';
+    font-weight: bolder;
+    border: solid white;
+}
+
+.pageLink_btn:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+
+.pageLink_btn > a{
+    cursor:pointer;
+    font-weight: bolder;
+    text-decoration: none;
+    font-size: 20px;
+    color:white;
+}
 .descr_para{
     margin-top:0px;
     font-size:40px;
@@ -80,20 +110,8 @@ body{
     margin-bottom: 0px;
 }
 
-.pageLink{
-    cursor:pointer;
-    color:orange;
-    /*background-color: brown;*/
-    width:30%;
-    padding:10px;
-}
-.pageLink > a{
-    cursor:pointer;
-    font-weight: bolder;
-    text-decoration: none;
-    font-size: 20px;
-    color:black;
-}
+
+
 
 .slide_link{
     text-decoration: none;
@@ -247,7 +265,7 @@ footer{
 }
 
 .button{
-    background-color: darkgray;
+    background-color: black;
     line-height: 50px;
     width: 300px;
     display: table-cell;
@@ -257,10 +275,23 @@ footer{
     margin-left: 5px;
     margin-right: 5px;
     vertical-align: middle;
+    color: white;
+    font-size: larger;
+    font-family: 'Times New Roman';
+    font-weight: bolder;
+    border: solid white;
+}
+
+.button > a{
+    cursor:pointer;
+    font-weight: bolder;
+    text-decoration: none;
+    font-size: 20px;
+    color:white;
 }
 
 .button:hover{
-    background-color: white;
+    background-color: gray;
     cursor: pointer;
 }
 
@@ -369,12 +400,40 @@ footer{
 }
 
 @media only screen and (max-width: 1100px){
+    .card{
+        margin-top: 10%;
+    }
     .button{
         width: 200px;
         height: 50px;
         justify-content: center;
     }
     
+    .pageLink_btn{
+        width: 200px;
+        justify-content: center;
+    }
+
+    .descr_para{
+        font-size:35px;
+        font-weight: bold;
+    }
+
+    .main_cont{
+        width: 80%;
+    }
+
+    .header_title{
+        font-size: 35px;
+    }
+
+    .open_info{
+        width: 80%;
+    }
+
+    .open_info p{
+        font-size:15px;
+    }
 }
 
 @media only screen and (max-width: 768px){
@@ -384,12 +443,16 @@ footer{
         justify-content: center;
     }
     
+   
 }
 
 @media only screen and (max-width: 414px){
+    .card{
+        margin-top: 17%;
+    }
     .button{
-        width: 100px;
-        height: 40px;
+        width: 150px;
+        height: 50px;
         justify-content: center;
     }
 
@@ -397,6 +460,33 @@ footer{
         vertical-align: middle;
     }
     
+    .pageLink_btn{
+        width: 150px;
+        height: 50px;
+        justify-content: center;
+    }
+
+    .descr_para{
+        margin-top:0px;
+        font-size:20px;
+        font-weight: bold;
+    }
+
+    .main_cont{
+        width: 100%;
+    }
+
+    .header_title{
+        font-size: 35px;
+    }
+
+    .open_info{
+        width: 100%;
+    }
+
+    .open_info p{
+        font-size:15px;
+    }
 }
 
 
