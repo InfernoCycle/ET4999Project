@@ -2,28 +2,19 @@
 
   require '../lib/email.php';
   require './connect.php';
+  error_reporting(E_ERROR | E_PARSE);
 
   $obj = new sql4();
 
-  if($_GET['email'] != ""){
-    sendEmail($_GET['email'], "Thank You for reserving a seat {$_GET['time']} on" . getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2]);
-    
-    $obj->mysql_conn(); //call this first to use any other function from this class
-    $obj->addUser();
-    $obj->close();
-  }
-  else{
-    echo "how did you get here?";
-  }
-
-  define("first_five", 5);
+  define("first_five", 4);
   $newString = null;
 
   function getMonth($month_int){
     $months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 
     'September', 'October', 'November', 'December'];
 
-    return $months[$month_int - 1];
+    define("trueMonth", $month_int-1);
+    return $months[trueMonth];
   }
 
   function convertDate($date = null){
@@ -43,6 +34,17 @@
     return (getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2]);
   }
 
+  if($_GET['email'] != ""){
+    convertDate($_GET['date']);
+    sendEmail($_GET['email'], "Thank You for reserving a seat at {$_GET['time']} on " . getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2]);
+    
+    $obj->mysql_conn(); //call this first to use any other function from this class
+    $obj->addUser();
+    $obj->close();
+  }
+  else{
+    echo "how did you get here?";
+  }
 ?>
 
 <!DOCTYPE html>

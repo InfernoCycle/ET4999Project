@@ -53,6 +53,10 @@
       $query = "DELETE FROM users WHERE user_id={$id}";
 
       mysqli_query($conn, $query);
+
+      $query = "DELETE FROM reservations WHERE user_id={$id}";
+
+      mysqli_query($conn, $query);
     }
 
     function any($query){

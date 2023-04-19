@@ -53,7 +53,7 @@
 
         <label>Choose Date:</label>
         <p class="innerSpace"></p>
-        <input id="datepicker" type="text" name="date" readonly>
+        <input onchange="valid_date(this)" id="datepicker" type="text" name="date" readonly>
 
         <p class="space"></p>
         
@@ -63,7 +63,7 @@
 
         <p class="space"></p>
 
-        <button type="submit" value="Submit">Submit</button>
+        <button onclick="submission(this)" type="button" value="Submit">Submit</button>
       </fieldset>
       
     </form>
