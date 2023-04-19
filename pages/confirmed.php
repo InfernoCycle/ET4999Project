@@ -1,18 +1,24 @@
 <?php 
 
+function getMonth(){
+  
+}
+
 function convertDate($date = null){
   global $newString;
   $char_array = str_split($date);
   $newString = "";
   define("first_five", 5);
   if($char_array){
-    for($k=0; $k < first_five; $k++)
-      if($char_array[0]){
-
+    for($k=0; $k < strlen($date); $k++)
+      if($char_array[$k] == "0" & $k < first_five){
+        continue;
       }else{
-        $newString = 2;
+        $newString = $newString . $char_array[$k];
       }
   }
+  $newString = preg_split("/\//", $newString);
+  return $newString[2];
 }
 
 ?>
