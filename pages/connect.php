@@ -28,18 +28,20 @@
 
       $stuff = mysqli_fetch_all(mysqli_query($conn, $query));
 
-      $nextId = 1;
-      if(count($stuff) == 0){
-        $nextId = 1;
-      }else{
-        $nextId = $stuff[count($stuff)-1][0] + 1;
-      }
-
       $query = "INSERT INTO users(first_name, last_name, email) 
       VALUES('{$_GET['fn']}', '{$_GET['ln']}', '{$_GET['email']}');";
 
       if($conn){
         mysqli_query($conn, $query);
+      }
+
+      $query = "select user_id from users";
+      $stuff = mysqli_fetch_all(mysqli_query($conn, $query));
+      $nextId = 1;
+      if(count($stuff) == 0){
+        $nextId = 1;
+      }else{
+        $nextId = $stuff[count($stuff)-1][0];
       }
 
       $query = "INSERT INTO reservations(time, notify, user_id, date) 

@@ -43,7 +43,9 @@
 	//Attachment
 		//$mail->addAttachment('img/attachment.png');
 	//Email body
-		$mail->Body = "<h1>This is HTML h1 Heading</h1></br><p>{$message}</p>";
+		$mail->Body = "<h1>The Restaurant</h1>
+		</br>
+		<p>{$message}</p>";
 	//Add recipient
 		//$mail->addAddress('WayneStateCSC5750Grp9@gmail.com');
 		$mail->addAddress($send_to);
