@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worldly Bites - Reservation Page</title>
+    <link rel="stylesheet" href="../index.css">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="./jquery-3.6.3.min.js"></script>
+    <script src="./jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="./jquery.timepicker.min.css"></link>
+    <script src="./jquery.timepicker.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>-->
+
+    <!--C:\Users\ecollege\Downloads\jquery-ui-1.13.2.custom\jquery-ui.js-->
+</head>
+<body>
+<div class="card">
+    <header class="header_cont">
+        <h1 class="header_title">Worldly Bites</h1>
+    </header>
+
+    <nav class="nav_cont">
+        <a href="../index.html">Home</a>
+        <a href="./menu.html">Menu</a>
+        <a href="./reserve.html">Reserve</a>
+        <a href="./about.html">About</a>
+        <a style="background-color: black;" href="./login.html">Login</a>
+    </nav>
+
+    <div class="login_box">
+        <div style="text-align: center;">
+            <h2>Login Form</h2>
+        </div>
+        <form id="login_form" method="post" action="connect.php">
+            <fieldset><br>
+                <label>Email:</label><br>
+                <input type="email" name="email" required><br><br>
+                <label>Password:</label><br>
+                <input type="password" name="password" required><br><br><br>
+                <input type="submit" value="Login"><br>
+            </fieldset>
+        </form>
+    </div>
+
+
+<!--    <form id="reserve_form" action="./confirmed.php" method="GET">-->
+<!--        <fieldset>-->
+<!--            <legend style="padding:10px; font-weight: bolder; font-size:35px">My Reservations</legend>-->
+<!--            <label>First Name:</label>-->
+<!--            <p class="innerSpace"></p>-->
+<!--            <input type="text" name="fn" required="true">-->
+
+<!--            <p class="space"></p>-->
+
+<!--            <label>Last Name:</label>-->
+<!--            <p class="innerSpace"></p>-->
+<!--            <input type="text" name="ln" required="true">-->
+
+<!--            <p class="space"></p>-->
+
+<!--            <label>Email:</label>-->
+<!--            <p class="innerSpace"></p>-->
+<!--            <input type="text" name="email" required="true">-->
+
+<!--            <p class="space"></p>-->
+
+<!--            <label>Choose Date:</label>-->
+<!--            <p class="innerSpace"></p>-->
+<!--            <input onchange="valid_date(this)" id="datepicker" type="text" name="date" readonly>-->
+
+<!--            <p class="space"></p>-->
+
+<!--            <label>Choose Time: </label>-->
+<!--            <p class="innerSpace"></p>-->
+<!--            <input class="start_time timepicker" type="text" name="time" readonly>-->
+
+<!--            <p class="space"></p>-->
+
+<!--            <button onclick="submission(this)" type="button" value="Submit">Submit</button>-->
+<!--        </fieldset>-->
+
+<!--    </form>-->
+</div>
+<script src="./jquery_funcs.js"></script>
+</body>
+</html>

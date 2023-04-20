@@ -16,12 +16,25 @@ body{
     background-size: cover;
     background-size: 100vw cover;
 }
+.login_box{
+    width: 40%;
+    align-self: center;
+    font-size: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10%;
+    align-content: center;
+    padding: 20px;
+    background: #AAAAAA;
+    border-radius: 20px;
+    opacity: 90%;
+}
 
 /*
 .header_cont{
     background-color: lightgrey;
     color: white;
-    margin:0% 0% 0% 0%;
+    margin:0% 0% 0% 0%;=
 }
 */
 
@@ -368,7 +381,29 @@ footer{
     width:400px;
     margin-top:50px;
 }
+#login_form{
+    width:90%;
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    /*border:5px solid black;*/
+    /*background-color: orange;*/
+}
 
+#login_form fieldset{
+    /*background-color: orange;*/
+    text-align: center;
+    border-radius: 20px;
+    /*border-color:black;*/
+    border-width: 5px;
+    align-content: center;
+}
+#login_form input{
+    width:80%;
+    padding:5px;
+    border-radius: 10px;
+    font-size: 20px;
+}
 /*----------reservation page----------*/
 
 @media (min-width: 700px){
@@ -431,6 +466,8 @@ footer{
         background-color: lightblue;
     }
 }
+
+
 @media (max-width: 700px){
     #reserve_form{
         width:90%;
@@ -439,7 +476,8 @@ footer{
         /*border:5px solid black;
         background-color: orange;*/
     }
-    
+
+
     #reserve_form fieldset{
         background-color: orange;
         text-align: center;
@@ -447,6 +485,7 @@ footer{
         border-color:black;
         border-width: 5px;
     }
+
 
     #reserve_form label{
         margin-right:1%;
@@ -521,6 +560,7 @@ footer{
         width: 80%;
         font-size: 25px;
     }
+
 }
 
 /*TABLET*/
