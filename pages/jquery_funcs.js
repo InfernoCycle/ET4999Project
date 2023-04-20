@@ -1,17 +1,92 @@
+let inputs = document.getElementsByTagName("input");
+var submittable = false;
+const MinTimeDistance = -(60*10);
+var TimeWidth = 0;
+
+function valid_time(){
+  console.log("");
+}
+
 $( function() {
     $( "#datepicker" ).datepicker();
   } );
 
+  function ltrim(cut, string){
+    let copy = string;
+    if(string.charAt(0) == cut){
+      copy = string.substring(1, string.length);
+    }
+    return copy;
+  }
+
 $(document).ready(function(){
   const date = new Date();
   if(date.getDay() != 0){
+    //console.log(new Date())
+    let beginningTime = "08:45";
+    let endTime = "10:00";
+
     $(".timepicker").timepicker({
       scrollbar: true,
       timeFormat: 'hh:mm p',
       minTime: '8:45 AM', // 11:45:00 AM,
       maxTime: '10:00 PM',
       maxMinutes: 30,
-      
+      change: function(e){
+        let currentTime = new Date();
+        let day = inputs[3].value.split("/");
+        let time =  inputs[4].value.split(" ");
+
+        //console.log(time[0])
+        let splitUserTime = time[0].split(":");//0 is hour, 1 is minute
+        splitUserTime[0] = ltrim('0', splitUserTime[0]);
+        let prefix = time[1];
+
+        //console.log(time[0])
+        splitUserTime[2] = "00";
+        if(prefix == "PM" && Number.parseInt(splitUserTime[0]) != 12){
+          splitUserTime[0] = (Number.parseInt(splitUserTime[0]) + 12) + ":00";
+          if(Number.parseInt(splitUserTime[0]) < 10){
+            splitUserTime[0] = "0" + (Number.parseInt(splitUserTime[0]) + 12).toString() + ":00";
+          }
+        }
+        else if(prefix == "PM" && splitUserTime[0] == 12){
+          splitUserTime[0] = "12";
+        }
+        if(prefix == "AM" && splitUserTime[0] != 12){
+          splitUserTime[0] = time[0];
+        }
+        else if(prefix == "AM" && splitUserTime[0] == 12){
+          splitUserTime[0] = "00";
+        }
+        let formattedUserPick = day[2] + "-" + day[0] + "-" + day[1]
+         + "T" + splitUserTime[0].toString() + ":00.000-04:00";
+        
+        let userDate = new Date(Date.parse(formattedUserPick));
+        
+        //this variable says that if user comes within 10 mins before reservation then they cannot choose it.
+        const MinTimeDistance = -(60*10); //10 mins
+
+        TimeWidth = (currentTime.getTime()/1000) - (userDate.getTime()/1000)
+        /*console.log(TimeWidth);
+        console.log(userDate/1000)
+        console.log(currentTime/1000);*/
+
+        let error = document.getElementsByClassName("space")[4];
+        if(TimeWidth > MinTimeDistance){
+          submittable = false;
+          error.style.margin="0px";
+          error.style.marginBottom="20px";
+          error.innerHTML="Too Late for this time please choose a new time or day.";
+        }else{
+          submittable = true;
+          error.style.margin="0px";
+          error.style.marginBottom="40px";
+          error.innerHTML="";
+          valid_date();
+        }
+        //console.log(splitUserTime);
+      },
       interval: 15 // 15 minutes
     });
   }
@@ -43,8 +118,6 @@ function splitStrings(value){
     newString = newString.split("/");
   return newString;
 }
-
-var submittable = false;
 
 function valid_date(e){
   let value = document.getElementById("datepicker").value;
@@ -103,6 +176,20 @@ function valid_date(e){
 function submission(e){
   let form = document.getElementById("reserve_form");
   if(submittable){
+    let error = document.getElementsByClassName("space")[4];
+        if(TimeWidth > MinTimeDistance){
+          submittable = false;
+          error.style.margin="0px";
+          error.style.marginBottom="20px";
+          error.innerHTML="Too Late for this time please choose a new time or day.";
+          return;
+        }else{
+          submittable = true;
+          error.style.margin="0px";
+          error.style.marginBottom="40px";
+          error.innerHTML="";
+          valid_date();
+        }
     form.submit();
   }
 }
