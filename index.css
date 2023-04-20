@@ -39,6 +39,7 @@ body{
     /*background-color: darkgray;*/
     margin-bottom: 2%;
     box-shadow: 5px 10px 8px 10px black;
+    background-color: rgba(114, 107, 107, 0.3);
 }
 
 .nav_cont > a{
@@ -46,7 +47,7 @@ body{
     width:100%;
     border:2px solid white;
     text-align: center;
-    text-decoration: underline;
+    text-decoration: none; /*changed this a lil bit*/
     text-decoration-color: white;
     font-family:'Times New Roman', Times, serif;
     font-weight: bold;
@@ -55,7 +56,7 @@ body{
 }
 
 .nav_cont > a:hover{
-    background-color: aqua;
+    background-color: black;
 }
 
 .main_cont{
@@ -126,6 +127,11 @@ body{
     text-shadow:0 0 8px black;
     border: solid white;
     border-radius: 20px;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.current_special > li{
+    padding: 10px 10px 10px 10px;
 }
 
 
@@ -251,8 +257,9 @@ body{
     border-radius: 25%;
     margin-top: 10px;
     text-shadow:0 0 8px black;
-    /*background-color: aliceblue;*/
-    /*margin:0% 5% 0% 5%;*/
+    /*background-color: aliceblue;
+    margin:0% 5% 0% 5%;*/
+    background-color: rgba(0,0,0,0.7);
 }
 .open_info h1{
     text-decoration: underline;
@@ -322,6 +329,9 @@ footer{
     justify-content: center;
     color: white;
     text-shadow:0 0 8px black;
+    background-color:rgba(0,0,0,0.7);
+    border-radius:10px;
+    padding:10px;
 }
 
 
@@ -339,6 +349,9 @@ footer{
     margin-right: auto;
     text-shadow:0 0 8px black;
     box-shadow: 5px 10px 8px 10px black;
+    padding:10px 10px 10px 10px;
+    border-radius: 10px;
+    background-color:rgba(0,0,0,0.7);/*Makes it a lil bit easier to see menu and not fight background*/
 }
 
 .header_subtitle{
@@ -351,6 +364,9 @@ footer{
     border: double white;
     text-shadow:0 0 8px black;
     box-shadow: 5px 10px 8px 10px black;
+    padding:10px;
+    width:400px;
+    margin-top:50px;
 }
 
 /*----------reservation page----------*/
@@ -364,7 +380,8 @@ footer{
         background-color: orange;*/
     }
     #reserve_form fieldset{
-        background-color: orange;
+        /*background-color: orange;*/
+        background-color:rgba(0,0,0,0.7);
         text-align: center;
         border-radius: 20px;
         border-color:black;
@@ -372,15 +389,21 @@ footer{
     }
     
     legend{
-        color:darkblue;
+        color:white;
     }
 
     #reserve_form label{
         margin-right:1%;
+        color:white;
+        font-size:20px;
+        font-weight: bolder;
     }
     
     .space{
         margin:10px 0px 20px 0px;
+        color:red;
+        font-weight: bolder;
+        font-size:15px;
     }
     
     .innerSpace{
@@ -388,10 +411,12 @@ footer{
     }
 
     #reserve_form input{
+        color:white;
         width:80%;
         padding:5px;
         border-radius: 10px;
         font-size: 20px;
+        background-color: rgba(114, 107, 107, 0.3);
     }
 
     fieldset button{

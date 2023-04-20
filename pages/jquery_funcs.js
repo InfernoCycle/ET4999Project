@@ -81,7 +81,7 @@ $(document).ready(function(){
         }else{
           submittable = true;
           error.style.margin="0px";
-          error.style.marginBottom="40px";
+          error.style.marginBottom="30px";
           error.innerHTML="";
           valid_date();
         }
@@ -155,7 +155,7 @@ function valid_date(e){
       return;
     }else{
       error.style.margin="0px";
-      error.style.marginBottom="40px";
+      error.style.marginBottom="30px";
       error.innerHTML=""
       //console.log("legal")
       submittable = true;
@@ -186,7 +186,7 @@ function submission(e){
         }else{
           submittable = true;
           error.style.margin="0px";
-          error.style.marginBottom="40px";
+          error.style.marginBottom="30px";
           error.innerHTML="";
           valid_date();
         }
