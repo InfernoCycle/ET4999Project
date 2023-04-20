@@ -26,7 +26,7 @@
   </div>
   <div id="loggedIn">
       <h2 style="display:inline-block;" id="username">Null</h2>
-      <button onclick="logout(this)">Log-Out</button>
+      <a href="../index.html"><button>Log-Out</button></a>
   </div>
   <div class="card">
   <header class="header_cont">
@@ -36,50 +36,32 @@
   <nav class="nav_cont">
       <a href="../index.html">Home</a>
       <a href="./menu.html">Menu</a>
-      <a style="background-color: black;" href="./reserve.html">Reserve</a>
+      <a href="./reserve.html">Reserve</a>
       <a href="./about.html">About</a>
   </nav>
-    <form id="reserve_form" action="./confirmed.php" method="GET">
+    <form id="reserve_form" method="GET">
       <fieldset>
-        <legend style="padding:10px; font-weight: bolder; font-size:35px">Reservation</legend>
-        <label>First Name:</label>
+        <legend style="padding:10px; font-weight: bolder; font-size:35px">Log-In</legend>
+        <label>Username:</label>
         <p class="innerSpace"></p>
         <input type="text" name="fn" required="true">
 
         <p class="space"></p>
         
-        <label>Last Name:</label>
+        <label>Password:</label>
         <p class="innerSpace"></p>
         <input type="text" name="ln" required="true">
         
         <p class="space"></p>
 
-        <label>Email:</label>
-        <p class="innerSpace"></p>
-        <input type="text" name="email" required="true">
-
-        <p class="space"></p>
-
-        <label>Choose Date:</label>
-        <p class="innerSpace"></p>
-        <input onchange="valid_date(this)" id="datepicker" type="text" name="date" readonly>
-
-        <p class="space"></p>
+        <button onclick="login(this)" type="button" value="Submit">Submit</button>
         
-        <label>Choose Time: </label>
-        <p class="innerSpace"></p>
-        <input class="start_time timepicker" type="text" name="time" readonly>
-
         <p class="space"></p>
-
-        <button onclick="submission(this)" type="button" value="Submit">Submit</button>
       </fieldset>
       
     </form>
     <footer></footer>
   </div>
-  <script src="./jquery_funcs.js"></script>
-  <script src="../index.js"></script>
-  <script src="./logOut.js"></script>
+  <script src="./loginUtil.js"></script>
 </body>
 </html>

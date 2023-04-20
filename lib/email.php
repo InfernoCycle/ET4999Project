@@ -35,7 +35,7 @@
 	//Set gmail password
 		$mail->Password = "znajykfpalrabibr";
 	//Email subject
-		$mail->Subject = "The Restaurant Reservation";
+		$mail->Subject = "Worldly Bites";
 	//Set sender email
 		$mail->setFrom('WayneStateCSC5750Grp9@gmail.com');
 	//Enable HTML

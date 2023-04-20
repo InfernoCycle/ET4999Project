@@ -1,4 +1,4 @@
-let slideIndex = 0;
+/*let slideIndex = 0;
 showSlides()
 function showSlides(){
     let i;
@@ -37,4 +37,39 @@ function showDate(){
     test.innerHTML = date.getDay();
 }
 
-showDate()
+showDate()*/
+function checkForLogin(){
+    const logged_out = document.getElementById("loggedOut");
+    const logged_in = document.getElementById("loggedIn");
+    const username = document.getElementById("username");
+
+    if(localStorage.length == 0){
+        localStorage.setItem("user", "");
+        localStorage.setItem("pass", "");
+        localStorage.setItem("logged_in", JSON.stringify(false));
+    }
+
+    if(JSON.parse(localStorage.getItem("logged_in"))){
+        logged_out.style.display = "none";
+        logged_in.style.display = "block";
+        username.innerHTML = localStorage.getItem("user");
+    }else{
+        logged_in.style.display = "none";
+        logged_out.style.display = "block";
+    }
+}
+
+checkForLogin();
+
+let dish_prices = document.getElementsByClassName("dish_price");
+
+if(JSON.parse(localStorage.getItem("logged_in"))){
+    for(let i = 0; i < dish_prices.length; i++){
+        dish_prices[i].style.display = "inline";
+    }
+}
+else{
+    for(let i = 0; i < dish_prices.length; i++){
+        dish_prices[i].style.display = "none";
+    }
+}
