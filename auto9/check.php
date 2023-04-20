@@ -61,7 +61,7 @@
       $obj->removeUser($results[$i][1]);
       //send email below
       sendEmail($results2[0][0], $message);
-      echo "User has been removed";
+      //echo "User has been removed";
       return;
     };
   }
