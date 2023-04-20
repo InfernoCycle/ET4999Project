@@ -14,6 +14,7 @@ body{
     background-repeat: no-repeat;
     height: 100%;
     background-size: cover;
+    background-size: 100vw cover;
 }
 
 /*
@@ -68,6 +69,11 @@ body{
     /*background-color: lightgrey;
     margin:0px 5% 0px 5%;*/
 }
+.main_cont h2{
+    text-shadow:0 0 8px black;
+    color: white;
+    font-size: 40px;
+}
 
 .pageLink_btn{
     cursor:pointer;
@@ -110,7 +116,17 @@ body{
     margin-bottom: 0px;
 }
 
-
+.current_special{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    text-shadow:0 0 8px black;
+    border: solid white;
+    border-radius: 20px;
+}
 
 
 .slide_link{
@@ -295,6 +311,47 @@ footer{
     cursor: pointer;
 }
 
+/*About page*/
+.about_content_paragraph{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-size:40px;
+    font-weight: bolder;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    text-shadow:0 0 8px black;
+}
+
+
+/*MENU page*/
+.dish_name{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.menu_special{
+    font-size: 24px;
+    width: 70%;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow:0 0 8px black;
+    box-shadow: 5px 10px 8px 10px black;
+}
+
+.header_subtitle{
+    font-size: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    color: white;
+    text-align: center;
+    border: double white;
+    text-shadow:0 0 8px black;
+    box-shadow: 5px 10px 8px 10px black;
+}
 
 /*----------reservation page----------*/
 
@@ -434,8 +491,14 @@ footer{
     .open_info p{
         font-size:15px;
     }
+
+    .about_content_paragraph{
+        width: 80%;
+        font-size: 25px;
+    }
 }
 
+/*TABLET*/
 @media only screen and (max-width: 768px){
     .button{
         width: 150px;
@@ -443,9 +506,28 @@ footer{
         justify-content: center;
     }
     
-   
+    .about_content_paragraph{
+        width: 80%;
+        font-size: 25px;
+    }
+    .menu_special{
+        width: 100%;
+        font-size: 20px;
+    }
+    
+    .header_subtitle{
+        font-size: 30px;
+    }
+
+    .button{
+        width: 150px;
+        height: 50px;
+        justify-content: center;
+    }
 }
 
+
+/*PHONE*/
 @media only screen and (max-width: 414px){
     .card{
         margin-top: 17%;
@@ -487,7 +569,44 @@ footer{
     .open_info p{
         font-size:15px;
     }
+
+    .about_content_paragraph{
+        width: 100%;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .current_special{
+        width: 80%;
+        font-size: 14px;
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main_cont h2{
+        font-size: 30px;
+    }
+
+    .nav_cont{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .menu_special{
+        width: 100%;
+        font-size: 12px;
+    }
+    
+    .header_subtitle{
+        font-size: 24px;
+    }
 }
+
+
+
+
+
 
 
 /*confirmation page*/
