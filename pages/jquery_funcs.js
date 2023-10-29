@@ -1,7 +1,18 @@
 let inputs = document.getElementsByTagName("input");
-var submittable = false;
-const MinTimeDistance = -(60*10);
+var submittable_time = false;
+var submittable_date = false;
+const MinTimeDistance = -(60*10); // the difference a reservation time can be submitted. in this case it's 10 mins
 var TimeWidth = 0;
+
+let currentYear = new Date().getFullYear().toString();
+//You can enter default date closures for your store
+//Format: ["m/mm", "d/dd", "yyyy"]
+//Note: do not add leading 0's
+var closures = [
+  ["1","1","2024"],
+  ["12","25","2024"],
+  ["10", "29", currentYear],
+];
 
 function valid_time(){
   console.log("");
@@ -32,6 +43,7 @@ $(document).ready(function(){
       minTime: '8:45 AM', // 11:45:00 AM,
       maxTime: '10:00 PM',
       maxMinutes: 30,
+      dynamic:false,
       change: function(e){
         let currentTime = new Date();
         let day = inputs[3].value.split("/");
@@ -74,12 +86,12 @@ $(document).ready(function(){
 
         let error = document.getElementsByClassName("space")[4];
         if(TimeWidth > MinTimeDistance){
-          submittable = false;
+          submittable_time = false;
           error.style.margin="0px";
           error.style.marginBottom="20px";
           error.innerHTML="Too Late for this time please choose a new time or day.";
         }else{
-          submittable = true;
+          submittable_time = true;
           error.style.margin="0px";
           error.style.marginBottom="30px";
           error.innerHTML="";
@@ -109,7 +121,7 @@ function splitStrings(value){
     
     if(char_array.length != 0){
       for(let k=0; k < value.length; k++)
-        if(char_array[k] == "0" && k < 4){
+        if(char_array[k] == "0" && (k == 0 || k == 3)){
           continue;
         }else{
           newString = newString + char_array[k];
@@ -128,28 +140,50 @@ function valid_date(e){
   //indexes
   //0 = month, 1 = day, 2 = year
   let date = new Date();
+
+  //first check if value is equal to a closed date
+  for(let i = 0; i < closures.length; i++){
+    if(JSON.stringify(userPickArray) == JSON.stringify(closures[i])){
+      error.style.margin="0px";
+      error.style.marginBottom="20px";
+      error.innerHTML="We are closed on this date";
+      submittable_date = false;
+      return;
+    }
+  }
+
   if(Number.parseInt(userPickArray[2]) < date.getFullYear()){
     error.style.margin="0px";
     error.style.marginBottom="20px";
     error.innerHTML="Cannot choose a year before " + date.getFullYear().toString();
-    submittable = false;
+    submittable_date = false;
+    return;
+  }
+  if(Number.parseInt(userPickArray[2]) > date.getFullYear()){
+    error.style.margin="0px";
+    error.style.marginBottom="20px";
+    error.innerHTML="Cannot choose a year before " + date.getFullYear().toString();
+    submittable_date = true;
     return;
   }
   //console.log(date.getFullYear())
+  //if user's chosen month number (1-12) is less than current month (1-12 cause i add 1 since in JS months start at 0)
   else if(Number.parseInt(userPickArray[0]) < date.getMonth()+1 ){
     error.style.margin="0px";
     error.style.marginBottom="20px";
     error.innerHTML="Cannot choose a date before today."
-    submittable = false;
+    submittable_date = false;
     return;
   }
+  //else if current month is greater than or equal to user's chosen month
   else if(date.getMonth()+1 >= Number.parseInt(userPickArray[0])){
+    //if user chosen day is less than current day
     if(Number.parseInt(userPickArray[1]) < date.getDate()){
-      console.log(Number.parseInt(userPickArray[1]), date.getDate());
+      //console.log(Number.parseInt(userPickArray[1]), date.getDate());
       error.style.margin="0px";
       error.style.marginBottom="20px";
       error.innerHTML="Cannot choose a date before today."
-      submittable = false;
+      submittable_date = false;
       //console.log("legal not")
       //console.log("Cannot choose a date before today2.");
       return;
@@ -157,13 +191,13 @@ function valid_date(e){
       error.style.margin="0px";
       error.style.marginBottom="30px";
       error.innerHTML=""
-      //console.log("legal")
-      submittable = true;
+      console.log("legal")
+      submittable_date = true;
       return;
     }
   }
   else{
-    submittable = true;
+    submittable_date = true;
     error.innerHTML="";
     //console.log("bruh");
     return;
@@ -175,21 +209,27 @@ function valid_date(e){
 
 function submission(e){
   let form = document.getElementById("reserve_form");
-  if(submittable){
+  let inputs = document.getElementsByTagName("input");
+  let fn = inputs.namedItem("fn").value;
+  let ln = inputs.namedItem("ln").value;
+  let email = inputs.namedItem("email").value;
+
+  if(submittable_time && submittable_date && (fn!="" && ln!="" && email!="")){
     let error = document.getElementsByClassName("space")[4];
         if(TimeWidth > MinTimeDistance){
-          submittable = false;
+          submittable_time = false;
           error.style.margin="0px";
           error.style.marginBottom="20px";
           error.innerHTML="Too Late for this time please choose a new time or day.";
           return;
         }else{
-          submittable = true;
+          submittable_time = true;
           error.style.margin="0px";
           error.style.marginBottom="30px";
           error.innerHTML="";
           valid_date();
         }
+        console.log(TimeWidth, MinTimeDistance)
     form.submit();
   }
 }

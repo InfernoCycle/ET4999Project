@@ -1,3 +1,13 @@
+<?php 
+
+  require './connect.php';
+  $obj = new sql4();
+
+  /*$obj->mysql_conn();
+  //printf(mysqli_num_rows($obj->get_available_tables()));
+  $obj->close();*/
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,6 +79,14 @@
         <label>Choose Time: </label>
         <p class="innerSpace"></p>
         <input class="start_time timepicker" type="text" name="time" readonly>
+
+        <p class="space"></p>
+
+        <label>Choose Table: </label>
+        <p class="innerSpace"></p>
+        <select>
+          
+        </select>
 
         <p class="space"></p>
 
