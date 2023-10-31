@@ -11,7 +11,7 @@
 body{
     margin:0% 0% 0% 0%;
     background-image: url("./img/Background.jpg");
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;  
     height: 100%;
     background-size: cover;
     background-size: 100vw cover;

@@ -1,12 +1,34 @@
-<?php 
+<p style="color:orange; font-size:20px;"><?php 
 
   require './connect.php';
-  $obj = new sql4();
 
-  /*$obj->mysql_conn();
-  //printf(mysqli_num_rows($obj->get_available_tables()));
-  $obj->close();*/
-?>
+  //to hide an input field set to 'false'.
+  $show_firstName = true;
+  $show_lastName = true;
+  $show_email = true;
+  $show_date = true;
+  $show_time = true;
+  $show_tables = true;
+
+  $obj = new sql4();
+  $associative_arr = [];
+  $obj->mysql_conn();
+  $results = $obj->get_available_tables();
+  //mysqli_fetch_array($obj->get_available_tables())
+  for($i = 0; $i < mysqli_num_rows($results); $i++){
+    if(!mysqli_data_seek($results, $i)){
+      continue;
+    }
+
+    if(!($row = mysqli_fetch_assoc($results))){
+      continue;
+    }
+
+    $associative_arr += array($row["table_size"] => $row["available"]);
+  }
+  
+  $obj->close();
+?></p>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,46 +71,69 @@
       <a style="background-color: black;" href="./reserve.html">Reserve</a>
       <a href="./about.html">About</a>
   </nav>
+  <!-- Form area below
+  our default html input format is: 
+  <label></label>
+  <p class="innerSpace"></p> 
+  <input type="<choose a type>" name="<choose a name>" required="<true or false>">
+  -->
+
     <form id="reserve_form" action="./confirmed.php" method="GET">
       <fieldset>
         <legend style="padding:10px; font-weight: bolder; font-size:35px">Reservation</legend>
+        
+        <?php if($show_firstName) {?>
         <label>First Name:</label>
         <p class="innerSpace"></p>
         <input type="text" name="fn" required="true">
 
         <p class="space"></p>
-        
+        <?php }?>
+
+        <?php if($show_lastName) {?>
         <label>Last Name:</label>
         <p class="innerSpace"></p>
         <input type="text" name="ln" required="true">
         
         <p class="space"></p>
+        <?php }?>
 
+        <?php if($show_email) {?>
         <label>Email:</label>
         <p class="innerSpace"></p>
         <input type="text" name="email" required="true">
 
         <p class="space"></p>
+        <?php }?>
 
+        <?php if($show_date) {?>
         <label>Choose Date:</label>
         <p class="innerSpace"></p>
         <input onchange="valid_date(this)" id="datepicker" type="text" name="date" readonly>
 
         <p class="space"></p>
-        
+        <?php }?>
+
+        <?php if($show_time) {?>
         <label>Choose Time: </label>
         <p class="innerSpace"></p>
         <input class="start_time timepicker" type="text" name="time" readonly>
 
         <p class="space"></p>
+        <?php }?>
 
+        <?php if($show_tables) {?>
         <label>Choose Table: </label>
         <p class="innerSpace"></p>
         <select>
-          
+          <?php 
+            foreach($associative_arr as $key => $value){
+          ?>
+          <option value="<?=$key . ', Available: ' . $value?>"><?=$key . ', Available: ' . $value?></option>
+          <?php }?>
         </select>
-
         <p class="space"></p>
+        <?php }?>
 
         <button onclick="submission(this)" type="button" value="Submit">Submit</button>
       </fieldset>

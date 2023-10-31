@@ -36,6 +36,8 @@
 
   if($_GET['email'] != ""){
     convertDate($_GET['date']);
+
+    //sendEmail(<user's email>, <message to send>);
     sendEmail($_GET['email'], "Thank You for reserving a seat at {$_GET['time']} on " . getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2]);
     
     $obj->mysql_conn(); //call this first to use any other function from this class
