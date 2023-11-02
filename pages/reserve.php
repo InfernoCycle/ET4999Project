@@ -1,4 +1,4 @@
-<p style="color:orange; font-size:20px;"><?php 
+<?php 
 
   require './connect.php';
 
@@ -28,7 +28,7 @@
   }
   
   $obj->close();
-?></p>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
