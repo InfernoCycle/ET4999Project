@@ -71,38 +71,69 @@
       <a style="background-color: black;" href="./reserve.html">Reserve</a>
       <a href="./about.html">About</a>
   </nav>
+  <!-- Form area below
+  our default html input format is: 
+  <label></label>
+  <p class="innerSpace"></p> 
+  <input type="<choose a type>" name="<choose a name>" required="<true or false>">
+  -->
+
     <form id="reserve_form" action="./confirmed.php" method="GET">
       <fieldset>
         <legend style="padding:10px; font-weight: bolder; font-size:35px">Reservation</legend>
+        
+        <?php if($show_firstName) {?>
         <label>First Name:</label>
         <p class="innerSpace"></p>
         <input type="text" name="fn" required="true">
 
         <p class="space"></p>
-        
+        <?php }?>
+
+        <?php if($show_lastName) {?>
         <label>Last Name:</label>
         <p class="innerSpace"></p>
         <input type="text" name="ln" required="true">
         
         <p class="space"></p>
+        <?php }?>
 
+        <?php if($show_email) {?>
         <label>Email:</label>
         <p class="innerSpace"></p>
         <input type="text" name="email" required="true">
 
         <p class="space"></p>
+        <?php }?>
 
+        <?php if($show_date) {?>
         <label>Choose Date:</label>
         <p class="innerSpace"></p>
         <input onchange="valid_date(this)" id="datepicker" type="text" name="date" readonly>
 
         <p class="space"></p>
-        
+        <?php }?>
+
+        <?php if($show_time) {?>
         <label>Choose Time: </label>
         <p class="innerSpace"></p>
         <input class="start_time timepicker" type="text" name="time" readonly>
 
         <p class="space"></p>
+        <?php }?>
+
+        <?php if($show_tables) {?>
+        <label>Choose Table: </label>
+        <p class="innerSpace"></p>
+        <select>
+          <?php 
+            foreach($associative_arr as $key => $value){
+          ?>
+          <option value="<?=$key . ', Available: ' . $value?>"><?=$key . ', Available: ' . $value?></option>
+          <?php }?>
+        </select>
+        <p class="space"></p>
+        <?php }?>
 
         <button onclick="submission(this)" type="button" value="Submit">Submit</button>
       </fieldset>
