@@ -1,3 +1,35 @@
+<?php 
+
+  require './connect.php';
+
+  //to hide an input field set to 'false'.
+  $show_firstName = true;
+  $show_lastName = true;
+  $show_email = true;
+  $show_date = true;
+  $show_time = true;
+  $show_tables = true;
+
+  $obj = new sql4();
+  $associative_arr = [];
+  $obj->mysql_conn();
+  $results = $obj->get_available_tables();
+  //mysqli_fetch_array($obj->get_available_tables())
+  for($i = 0; $i < mysqli_num_rows($results); $i++){
+    if(!mysqli_data_seek($results, $i)){
+      continue;
+    }
+
+    if(!($row = mysqli_fetch_assoc($results))){
+      continue;
+    }
+
+    $associative_arr += array($row["table_size"] => $row["available"]);
+  }
+  
+  $obj->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
