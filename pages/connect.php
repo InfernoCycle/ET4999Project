@@ -1,9 +1,9 @@
 <?php 
   
-  $servername = "localhost";
-  $username = "ODBC";
-  $password = "icarlyFan";
-  $database = "reserve";
+  $servername = "localhost"; //host name for sql server
+  $username = "ODBC"; //username that owns sql server
+  $password = "icarlyFan"; //password for server
+  $database = "reserve"; //name of database being used
 
   $conn = null;
 
@@ -12,7 +12,9 @@
       global $servername, $username, $password, $database, $conn;
   
       $conn = mysqli_connect($servername, $username, $password, $database);
-  
+      if($conn->connect_errno){
+        die("failed to connect to mysql: " . $conn->connect_error);
+      }
       if($conn){
         return;
       }
@@ -24,10 +26,13 @@
     function addUser(){
       global $conn;
 
+      //'user_id' is the column name for storing user's unique id
+      //'users' is the table name in chosen database
       $query = "select user_id from users";
 
       $stuff = mysqli_fetch_all(mysqli_query($conn, $query));
 
+      //insert given credentials from user's entry in form into database
       $query = "INSERT INTO users(first_name, last_name, email) 
       VALUES('{$_GET['fn']}', '{$_GET['ln']}', '{$_GET['email']}');";
 
@@ -65,6 +70,15 @@
       global $conn;
 
       return mysqli_query($conn, $query);
+    }
+
+    function get_available_tables(){
+      global $conn;
+      if($conn){
+        $result = mysqli_query($conn, "SELECT table_size, available FROM tables");
+
+        return $result;
+      }
     }
 
     function close(){

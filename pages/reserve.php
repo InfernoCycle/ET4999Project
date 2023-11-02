@@ -136,6 +136,9 @@
         <?php }?>
 
         <button onclick="submission(this)" type="button" value="Submit">Submit</button>
+        <p class="space"></p>
+
+        <a style="color:white;" href="./status.php"><b>Already have a reservation? Check Now</b></a>
       </fieldset>
       
     </form>

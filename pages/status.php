@@ -1,3 +1,7 @@
+<?php 
+  /* check if user reservation is still active. */
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,16 +33,17 @@
       <button onclick="logout(this)">Log-Out</button>
   </div>
   <div class="card">
-  <header class="header_cont">
-    <h1 class="header_title">Worldly Bites</h1>
-  </header>
+    <header class="header_cont">
+      <h1 class="header_title">Worldly Bites</h1>
+    </header>
 
-  <nav class="nav_cont">
-      <a href="../index.html">Home</a>
-      <a href="./menu.html">Menu</a>
-      <a style="background-color: black;" href="./reserve.html">Reserve</a>
-      <a href="./about.html">About</a>
-  </nav>
+    <nav class="nav_cont">
+        <a href="../index.html">Home</a>
+        <a href="./menu.html">Menu</a>
+        <a href="./reserve.php">Reserve</a>
+        <a href="./about.html">About</a>
+    </nav>
+  </div>
     <form id="reserve_form" action="./confirmed.php" method="GET">
       <fieldset>
         <legend style="padding:10px; font-weight: bolder; font-size:35px">Reservation Status</legend>
@@ -65,7 +70,6 @@
       
     </form>
     <footer></footer>
-  </div>
   <script src="./jquery_funcs.js"></script>
   <script src="../index.js"></script>
   <script src="./logOut.js"></script>
