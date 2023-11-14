@@ -1,7 +1,9 @@
 <?php 
 
-  require '../lib/email.php';
-  require './connect.php';
+  //require '../lib/email.php';
+  require_once '../lib/utilities.php';
+  require_once './connect.php';
+
   error_reporting(E_ERROR | E_PARSE);
 
   $obj = new sql4();
@@ -9,7 +11,7 @@
   define("first_five", 4);
   $newString = null;
 
-  function getMonth($month_int){
+  /*function getMonth($month_int){
     $months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 
     'September', 'October', 'November', 'December'];
 
@@ -32,14 +34,16 @@
     }
     $newString = preg_split("/\//", $newString);
     return (getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2]);
-  }
+  }*/
 
   if($_GET['email'] != ""){
-    convertDate($_GET['date']);
+    //convertDate($_GET['date']);
 
+    ////email send has been moved to connect.php
     //sendEmail(<user's email>, <message to send>);
-    sendEmail($_GET['email'], "Thank You for reserving a seat at {$_GET['time']} on " . getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2]);
+    //sendEmail($_GET['email'], "Thank You for reserving a seat at {$_GET['time']} on " . getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2]);
     
+    //return;
     $obj->mysql_conn(); //call this first to use any other function from this class
     $obj->addUser();
     $obj->close();
@@ -64,7 +68,7 @@
     <h1>
       <?php echo $_GET['fn'] . " " . $_GET['ln'] . "'s" ?> seat has been reserved for 
       <?php echo convertDate($_GET['date']) ?> at 
-      <?php echo $_GET['time'] ?>
+      <?php echo $_GET['time'] ?> for <?php echo explode(",", $_GET["table"])[0];?>
     </h1>
     <h1 style="color:red;">An email has been sent to <?php echo $_GET['email'] ?></h1>
     <img src="../img/Confirmed.jpg" >

@@ -125,7 +125,7 @@
         <?php if($show_tables) {?>
         <label>Choose Table: </label>
         <p class="innerSpace"></p>
-        <select>
+        <select name="table">
           <?php 
             foreach($associative_arr as $key => $value){
           ?>
