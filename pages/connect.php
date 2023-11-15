@@ -31,17 +31,24 @@
     function get_table_id(){
       global $table_id;
       
-      switch(explode(",", $_GET["table"])[0]){
-        case 'Single Seat':
+      switch(trim(explode(",", $_GET["table"])[0])){
+        case "Single Seat":
           $table_id = 1;
+          break;
         case 'Table of 2':
           $table_id = 2;
+          break;
         case 'Table of 4':
           $table_id = 3;
+          break;
         case 'Table of 6':
           $table_id = 4;
+          break;
         case 'Table of 10':
           $table_id = 5;
+          break;
+        default:
+          $table_id = 1;
       }
     }
 

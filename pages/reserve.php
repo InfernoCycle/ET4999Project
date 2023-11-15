@@ -129,7 +129,15 @@
           <?php 
             foreach($associative_arr as $key => $value){
           ?>
-          <option value="<?=$key . ', Available: ' . $value?>"><?=$key . ', Available: ' . $value?></option>
+            <?php if($value > 0){ ?>
+              <option value="<?=$key . ', Available: ' . $value?>">           
+                  <?=$key . ', Available: ' . $value?>
+              </option>
+            <?php }else{?>
+              <option disabled value="<?=$key . ' is Unavailable'?>">
+                <?=$key . ' is Unavailable'?>
+              </option>
+            <?php }?>
           <?php }?>
         </select>
         <p class="space"></p>
@@ -144,6 +152,7 @@
     </form>
     <footer></footer>
   </div>
+
   <script src="./jquery_funcs.js"></script>
   <script src="../index.js"></script>
   <script src="./logOut.js"></script>

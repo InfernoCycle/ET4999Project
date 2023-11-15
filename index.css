@@ -756,3 +756,70 @@ fieldset button:hover{
     margin-right:10px;
     cursor:pointer;
 }
+
+/*Status Page form*/
+#status_form{
+    width:50%;
+    margin:10% auto 10% auto;
+    text-align: center;
+    /*border:5px solid black;
+    background-color: orange;*/
+}
+#status_form fieldset{
+    /*background-color: orange;*/
+    background-color:rgba(0,0,0,0.7);
+    text-align: center;
+    border-radius: 20px;
+    border-color:black;
+    border-width: 5px;
+}
+
+legend{
+    color:white;
+}
+
+#status_form label{
+    margin-right:1%;
+    color:white;
+    font-size:20px;
+    font-weight: bolder;
+}
+
+.space{
+    margin:10px 0px 20px 0px;
+    color:red;
+    font-weight: bolder;
+    font-size:15px;
+}
+
+.innerSpace{
+    margin:0px 0px 00px 0px;
+}
+
+#status_form input{
+    color:white;
+    width:80%;
+    padding:5px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: rgba(114, 107, 107, 0.3);
+}
+
+fieldset button{
+    border-radius: 10px;
+    padding:10px;
+    font-size:15px;
+    font-weight: bolder;
+    cursor:pointer;
+    border:2px solid black;
+}
+fieldset button:hover{
+    background-color: lightblue;
+}
+
+#modal_cont{
+    display:block;
+    width:100%;
+    background-color: orange;
+    position:absolute;
+}

@@ -1,5 +1,27 @@
 <?php 
   /* check if user reservation is still active. */
+  require_once './connect.php';
+  require_once '../lib/utilities.php';
+
+  $exists = false;
+
+  if(isset($_POST["fn"])){
+    $obj = new sql4();
+    $obj->mysql_conn();
+    $result = $obj->any("SELECT first_name, last_name, cancel_id FROM users WHERE cancel_id={$_POST["unique_code"]} AND first_name='{$_POST["fn"]}' AND last_name='{$_POST["ln"]}';");
+    $obj->close();
+
+    $data = mysqli_fetch_array($result);
+
+    if(is_null($data)){
+      $exists = false;
+      echo "<h1 style='color:white;'>data came back empty</h1>";
+    }else{
+      $exists = true;
+      echo "<h1 style='color:white;'>" . implode($data) . " " . camel_case($_POST["fn"]) ."</h1>";
+    }
+    
+  }
 ?>
 
 <!DOCTYPE html>
@@ -43,9 +65,14 @@
         <a href="./reserve.php">Reserve</a>
         <a href="./about.html">About</a>
     </nav>
+    <?php if($exists){?>
+    <div id="modal_cont">
+      <h2>Registration Status</h2>
+    </div>
+  <?php }?>
   </div>
-    <form id="reserve_form" action="./confirmed.php" method="GET">
-      <fieldset>
+    <form id="status_form" action="status.php" method="POST">
+      <fieldset id="status_fieldset">
         <legend style="padding:10px; font-weight: bolder; font-size:35px">Reservation Status</legend>
         
         <label>First Name:</label>
@@ -62,13 +89,23 @@
 
         <label>Confirmation Code:</label>
         <p class="innerSpace"></p>
-        <input type="text" name="email" required="true">
+        <input type="text" maxlength="6" name="unique_code" required="true">
         <p class="innerSpace"><br></p>
 
-        <button onclick="submission(this)" type="button" value="Submit">Submit</button>
+        <button name="submit_btn" id="status_submit" type="button" value="Submit">Submit</button>
       </fieldset>
       
     </form>
+    <h style="color:white;">
+      <?php
+      if(isset($_POST["fn"])){
+        echo "<h1>Hello " . $_POST["fn"] . " " . $_POST["ln"] . "</h1>";
+      }else{
+        echo "<h1>nothing submitted yet</h1>";
+      }
+      //unset($_POST);
+      ?>
+    </h>
     <footer></footer>
   <script src="./jquery_funcs.js"></script>
   <script src="../index.js"></script>

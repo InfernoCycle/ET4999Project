@@ -23,4 +23,15 @@
     $newString = preg_split("/\//", $newString);
     return (getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2]);
   }
+
+  function camel_case($str){
+    $newString = "";
+
+    for($i = 0; $i < strlen($str); $i++){
+      if($i == 0){ $newString .= strtoupper($str[0]); continue;}
+      $newString .= strtolower($str[$i]);
+    }
+
+    return $newString;
+  }
 ?>

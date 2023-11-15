@@ -233,3 +233,23 @@ function submission(e){
     form.submit();
   }
 }
+
+
+$(document).ready(function(){
+  $("#status_submit").click((e)=>{
+    //define and declare the variables
+    let form = document.getElementById("status_form");
+    let status_fieldset = document.getElementById("status_fieldset").getElementsByTagName("input");
+
+    //check if any of the input fields are empty
+    for(let i = 0; i < status_fieldset.length; i++){
+      if(status_fieldset[i].value.trim() == ""){
+        console.log("empty field detected")
+        return;
+      }
+    }
+    
+    //submit the form if everything is not empty
+    form.submit();
+  })
+})
