@@ -312,5 +312,30 @@ function close_modal(e){
 $(document).ready(function(){
   $(".exit_button").on("click", function(e){
     close_modal(e);
+  });
+//block
+  $("#cancel_rsv_btn").on("click", function(e){
+    const cancel_modal = document.getElementById("cancel_modal");
+    cancel_modal.style.display="block";
   })
+
+  $("#decline_cancel").on("click", function(e){
+    const cancel_modal = document.getElementById("cancel_modal");
+    cancel_modal.style.display="none";
+  });
 })
+
+var interval = null;
+var count = 15;
+function timer(){
+  interval = setInterval(timer_handler, 1000)
+}
+
+function timer_handler(){
+  if(count == 0){
+    clearInterval(interval);
+    window.location.replace("../index.html");
+  }
+  document.getElementById("count_down").innerText = count.toString();
+  count-=1;
+}

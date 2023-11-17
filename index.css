@@ -837,14 +837,14 @@ fieldset button:hover{
 }
 
 #info_cancel_cont{
-    background-color: purple;
+    /*background-color: purple;*/
     display:inline-flex;
     width:100%;
 }
 
 #info_cont{
-    background-color: red;
-    
+    /*background-color: red;*/
+    width:40%;
 }
 .modal_info{
     color:white;
@@ -884,8 +884,10 @@ fieldset button:hover{
 }
 
 #cancel_modal{
+    display:none;
     text-align: center;
     width:50%;
+    background-color:rgba(80,80,80);
 }
 
 .confirm_question{
@@ -900,14 +902,28 @@ fieldset button:hover{
     padding:5px;
 }
 
+#cancel_msg{
+    display:none;
+    font-size:20px;
+    color:orange;
+}
+
 @media only screen and (max-width: 414px){
     #info_cancel_cont{
-        background-color: purple;
         display:block;
+        width:100%;
+        margin-bottom:10px;
+    }
+    #info_cont{
         width:100%;
     }
     #cancel_modal{
         text-align: center;
-        width:50%;
+        width:100%;
+    }
+    #modal_cont_exit{
+        padding:5px;
+        cursor:pointer;
+        border-radius: 0px 10px 0px 0px;
     }
 }

@@ -109,7 +109,7 @@
       //$random_number = rand(100000, 999999);
       //set a min and max here. the higher the max the more unique codes
       //can be generated
-      $rand_numb = rand(100000, 100100);
+      $rand_numb = rand(100000, 100100);//min has to be a 6 digit number
 
       $query = "SELECT cancel_id FROM users WHERE cancel_id={$rand_numb}";
       
@@ -124,15 +124,21 @@
 
     function removeUser($id){
       global $conn;
-      $query = "DELETE FROM users WHERE user_id={$id}";
+      try{
+        $this->add_available_tables($id);
+        
+        $query = "DELETE FROM users WHERE user_id={$id}";
 
-      mysqli_query($conn, $query);
+        mysqli_query($conn, $query);
 
-      $query = "DELETE FROM reservations WHERE user_id={$id}";
+        $query = "DELETE FROM reservations WHERE user_id={$id}";
 
-      mysqli_query($conn, $query);
+        mysqli_query($conn, $query);
 
-      $this->add_available_tables();
+        return true;
+      }catch(Exception $e){
+        return false;
+      }
     }
 
     function any($query){
@@ -150,8 +156,12 @@
       }
     }
 
-    function add_available_tables(){
+    function add_available_tables($user_id){
       global $table_id;
+
+      $query = "SELECT table_id FROM users WHERE user_id={$user_id}";
+      $result = mysqli_fetch_row($this->any($query));
+      $table_id = $result[0];
 
       $query = "SELECT available FROM tables WHERE id={$table_id}";
       $result = mysqli_fetch_array($this->any($query));

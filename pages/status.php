@@ -11,6 +11,9 @@
   $rsv_time = null;
   $rsv_date = null;
 
+  $obj = null;
+  $user_id = null;
+
   if(isset($_POST["fn"])){
     $obj = new sql4();
     $obj->mysql_conn();
@@ -98,9 +101,12 @@
         <p class="modal_info">Reserved Table: <?=$table;?></p>
       </div>
       <div id="cancel_modal">
-        <p class="confirm_question">Are you sure you want to cancel?</p>
-        <button class="cancel_btns">Yes</button>
-        <button class="cancel_btns">No</button>
+        <p id="confirm_question" class="confirm_question">Are you sure you want to cancel?</p>
+        <form id="cancel_form">
+          <input type="button" name="options" value="yes" id="accept_cancel" class="cancel_btns"/>
+          <input type="button" name="options" value="no" id="decline_cancel" class="cancel_btns"/>
+          <p id="cancel_msg">We successfully removed your reservation. You will be sent to home in <span id="count_down">15</span> seconds</p>
+        </form>
       </div>
     </div>
     <div id="b_buttons_cont">
@@ -159,12 +165,34 @@
     </script>
   <?php }?>
   <script>
-    function confirm(){
+    $(document).ready(function(){
+      $("#accept_cancel").on("click", async function(){
+        //credit to site: https://tecadmin.net/submit-form-without-page-refresh-php-jquery/
+        $.post("../lib/specificRemove.php", {option:<?=$user_id?>}, function(data){
+          console.log(data)
+          if(data.toString() === "true"){
+            const buttons = document.getElementsByClassName("cancel_btns");
+            for(btns of buttons){
+              btns.style.display="none";
+            }
 
-    }
-    function cancel_rsv(){
+            const question = document.getElementById("confirm_question");
+            question.style.display = "none";
 
-    }
+            const accept_msg = document.getElementById("cancel_msg");
+            accept_msg.style.display="block";
+
+            const cancel_modal = document.getElementById("cancel_modal");
+            cancel_modal.style.background="none";
+
+            timer();
+
+          }else{
+            console.log("it's false");
+          }
+        })       
+      })
+    })
   </script>
 </body>
 </html>
