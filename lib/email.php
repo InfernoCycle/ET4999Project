@@ -31,13 +31,13 @@
 	//Port to connect smtp
 		$mail->Port = "587";
 	//Set gmail username
-		$mail->Username = "WayneStateCSC5750Grp9@gmail.com";
+		$mail->Username = "WayneStateET4999SundaGrp5@gmail.com";
 	//Set gmail password
 		$mail->Password = "znajykfpalrabibr";
 	//Email subject
 		$mail->Subject = "Worldly Bites";
 	//Set sender email
-		$mail->setFrom('WayneStateCSC5750Grp9@gmail.com');
+		$mail->setFrom('WayneStateET4999SundaGrp5@gmail.com');
 	//Enable HTML
 		$mail->isHTML(true);
 	//Attachment

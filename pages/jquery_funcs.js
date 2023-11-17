@@ -235,21 +235,82 @@ function submission(e){
 }
 
 
+/* Everything here pertains to status page */
 $(document).ready(function(){
   $("#status_submit").click((e)=>{
     //define and declare the variables
     let form = document.getElementById("status_form");
     let status_fieldset = document.getElementById("status_fieldset").getElementsByTagName("input");
+    let error_msg = document.getElementById("error_log");
+    error_msg.style.display="none";
+    error_msg.innerText = "";
 
     //check if any of the input fields are empty
     for(let i = 0; i < status_fieldset.length; i++){
       if(status_fieldset[i].value.trim() == ""){
         console.log("empty field detected")
+        error_msg.style.display="block";
+        error_msg.innerText = "Cannot have empty fields.";
         return;
+      }
+      if(status_fieldset[i].name == "unique_code"){
+        if(Number.isNaN(Number(status_fieldset[i].value))){
+          console.log("Error with unique Code");
+          error_msg.style.display="block";
+          error_msg.innerText = "Invalid Confirmation Code.";
+          return;
+        }
       }
     }
     
     //submit the form if everything is not empty
     form.submit();
+  })
+})
+
+function box_out_body(e){
+  const modal = document.getElementById("modal_cont");
+  modal.style.display = "block";
+  
+  const body = document.getElementsByTagName("body")[0];
+
+  // //Credit to stack user: Samuli Hakoniemi
+  //Link: https://stackoverflow.com/questions/45607982/how-to-disable-background-when-modal-window-pops-up
+  body.style.pointerEvents = "none";
+  modal.style.pointerEvents = "auto";
+
+  const children = body.children;
+
+  for(let i = 0; i < children.length; i++){
+    if(children[i] === modal){
+      children[i].style.opacity="1";
+    }else{
+      children[i].style.opacity="0.1";
+    }
+  }
+}
+
+function close_modal(e){
+  const modal = document.getElementById("modal_cont");
+  modal.style.display = "none";
+  
+  const body = document.getElementsByTagName("body")[0];
+
+  const children = body.children;
+
+  for(let i = 0; i < children.length; i++){
+    if(children[i] === modal){
+      children[i].style.opacity="1";
+    }else{
+      children[i].style.opacity="1";
+    }
+  }
+
+  body.style.pointerEvents = "auto";
+}
+
+$(document).ready(function(){
+  $(".exit_button").on("click", function(e){
+    close_modal(e);
   })
 })

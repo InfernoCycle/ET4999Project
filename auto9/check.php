@@ -72,7 +72,7 @@
   //send a notification as soon as possible reminding them their 
   //reservation is coming up.
 
-  $query = "select date, user_id, time, notify from reservations";
+  $query = "select reserved_date, user_id, reserved_time, notify from reservations";
 
   $results = mysqli_fetch_all($obj->any($query));
 

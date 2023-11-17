@@ -1,5 +1,6 @@
 <?php 
   require_once '../lib/email.php';
+  require_once '../lib/utilities.php';
   
   //require './confirmed.php';
   
@@ -28,7 +29,7 @@
       }
     }
 
-    function get_table_id(){
+    /*function get_table_id(){
       global $table_id;
       
       switch(trim(explode(",", $_GET["table"])[0])){
@@ -50,7 +51,7 @@
         default:
           $table_id = 1;
       }
-    }
+    }*/
 
     function addUser(){
       global $conn;
@@ -65,8 +66,8 @@
       //$stuff = mysqli_fetch_all(mysqli_query($conn, $query));
 
       //get's the table_id so we can use it for deletions
-      $this->get_table_id();
-
+      //$this->get_table_id();
+      $table_id = get_table_id(trim(explode(",", $_GET["table"])[0]));
       //generate a unique random number for user.
       $rand_number = $this->generate_cancel_code();
 
@@ -87,7 +88,7 @@
         $nextId = $stuff[count($stuff)-1][0];
       }
 
-      $query = "INSERT INTO reservations(time, notify, user_id, date) 
+      $query = "INSERT INTO reservations(reserved_time, notify, user_id, reserved_date) 
       VALUES('{$_GET['time']}', 0, {$nextId}, '{$_GET['date']}');";
 
       mysqli_query($conn, $query);

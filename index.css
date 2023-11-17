@@ -818,8 +818,96 @@ fieldset button:hover{
 }
 
 #modal_cont{
-    display:block;
-    width:100%;
-    background-color: orange;
+    display:none;
+    width:92%;
+    margin-left:4%;
+    background-color:rgba(0,0,0, 0.7);
     position:absolute;
+    border-radius:10px;
+}
+#exit_div{
+    width:100%;
+    text-align: right;
+    position:absolute;
+}
+#modal_cont_exit{
+    padding:10px;
+    cursor:pointer;
+    border-radius: 0px 10px 0px 0px;
+}
+
+#info_cancel_cont{
+    background-color: purple;
+    display:inline-flex;
+    width:100%;
+}
+
+#info_cont{
+    background-color: red;
+    
+}
+.modal_info{
+    color:white;
+    font-weight: bolder;
+    margin-left:10px;
+}
+#b_buttons_cont{
+    width:100%;
+    margin-bottom:10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.b_action{
+    width:250px;
+    padding:10px;
+    cursor:pointer;
+    border-radius:10px;
+}
+.b_action:hover, #modal_cont_exit:hover{
+    background-color:lightblue;
+}
+.b_action:nth-child(1){
+    margin-bottom:10px;
+}
+@media only screen and (max-width: 414px){
+    .b_action{
+        width:80%;
+        margin-top:3px;
+        text-align: center;
+    }
+}
+
+#error_log{
+    display:none;
+    color:red;
+}
+
+#cancel_modal{
+    text-align: center;
+    width:50%;
+}
+
+.confirm_question{
+    font-weight: bolder;
+    font-size:30px;
+    color:white;
+}
+
+.cancel_btns{
+    cursor:pointer;
+    width:50px;
+    padding:5px;
+}
+
+@media only screen and (max-width: 414px){
+    #info_cancel_cont{
+        background-color: purple;
+        display:block;
+        width:100%;
+    }
+    #cancel_modal{
+        text-align: center;
+        width:50%;
+    }
 }

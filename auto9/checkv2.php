@@ -8,7 +8,4 @@
 
   $results = null;
   $results2 = null;
-
-  
-
 ?>
