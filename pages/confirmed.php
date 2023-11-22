@@ -6,10 +6,13 @@
 
   error_reporting(E_ERROR | E_PARSE);
 
+  $invalid_entry = false;
+
   $obj = new sql4();
 
   define("first_five", 4);
   $newString = null;
+  session_start();
 
   /*function getMonth($month_int){
     $months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 
@@ -42,10 +45,21 @@
     ////email send has been moved to connect.php
     //sendEmail(<user's email>, <message to send>);
     //sendEmail($_GET['email'], "Thank You for reserving a seat at {$_GET['time']} on " . getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2]);
-    
+
     //return;
     $obj->mysql_conn(); //call this first to use any other function from this class
-    $obj->addUser();
+    $result_set = $obj->any("SELECT email FROM users WHERE email='{$_GET['email']}';");
+    $result = mysqli_fetch_all($result_set);
+    if(count($result) != 0){
+      $_SESSION["invalid_entry"] = true;
+      $obj->close();
+      header("Location: ./reserve.php");
+    }
+    else{
+      session_unset();
+      session_destroy();
+      //$obj->addUser();
+    }
     $obj->close();
   }
   else{
@@ -63,6 +77,7 @@
   <title>Document</title>
 </head>
 <body style="background:none;">
+
   <div id="confirm_message">
     <!--<h1><?php echo convertDate($_GET['date']) ?></h1>-->
     <h1>

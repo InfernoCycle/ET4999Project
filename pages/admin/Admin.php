@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="../index.css">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="./jquery-3.6.3.min.js"></script>
-    <script src="./jquery-ui.js"></script>
+    <link rel="stylesheet" href="../../index.css">
+    <script src="../jquery-3.6.3.min.js"></script>
+    <script src="../jquery-ui.js"></script>
 
     <link rel="stylesheet" href="./jquery.timepicker.min.css"></link>
     <script src="./jquery.timepicker.min.js"></script>
@@ -38,15 +38,15 @@
       </header>
 
       <nav class="nav_cont">
-          <a href="../index.html">Home</a>
-          <a href="./menu.html">Menu</a>
-          <a href="./reserve.php">Reserve</a>
-          <a href="./about.html">About</a>
+          <a href="../../index.html">Home</a>
+          <a href="../menu.html">Menu</a>
+          <a href="../reserve.php">Reserve</a>
+          <a href="../about.html">About</a>
       </nav>
     </div>
-    <form id="admin_form" action="status.php" method="POST">
+    <form id="admin_form" class="custom_form" action="status.php" method="POST">
       <fieldset id="status_fieldset">
-        <legend style="padding:10px; font-weight: bolder; font-size:35px">Reservation Status</legend>
+        <legend style="padding:10px; font-weight: bolder; font-size:35px">Staff-In</legend>
         
         <label>First Name:</label>
         <p class="innerSpace"></p>
@@ -72,7 +72,7 @@
         <input placeholder="123456" type="text" maxlength="6" name="employee_id" required="true">
         <p class="innerSpace"><br></p>
 
-        <button name="submit_btn" id="employee_submit" type="button" value="Submit">Submit</button>
+        <button name="submit_btn" id="employee_submit" type="button" value="Submit">Login</button>
 
         <p class="space"></p>
 

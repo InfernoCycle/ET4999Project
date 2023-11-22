@@ -19,7 +19,7 @@
 
 	function sendEmail($send_to="", $message=""){
 		//Create instance of PHPMailer
-	$mail = new PHPMailer();
+	$mail = new PHPMailer(true);
 	//Set mailer to use smtp
 		$mail->isSMTP();
 	//Define smtp host
@@ -31,19 +31,20 @@
 	//Port to connect smtp
 		$mail->Port = "587";
 	//Set gmail username
-		$mail->Username = "WayneStateET4999SundaGrp5@gmail.com";
+		$mail->Username = "theunitedtaste@gmail.com";
 	//Set gmail password
-		$mail->Password = "znajykfpalrabibr";
+		$mail->Password = "sksickrjkyxrnvlj";
 	//Email subject
-		$mail->Subject = "Worldly Bites";
+		$mail->Subject = "United Taste";
 	//Set sender email
-		$mail->setFrom('WayneStateET4999SundaGrp5@gmail.com');
+		$mail->setFrom('theunitedtaste@gmail.com');
 	//Enable HTML
 		$mail->isHTML(true);
 	//Attachment
 		//$mail->addAttachment('img/attachment.png');
 	//Email body
-		$mail->Body = "<h1>The Restaurant</h1>
+		$mail->Body = "
+		<h1 style='text-align:center;'>Worldly Bites</h1>
 		</br>
 		<p>{$message}</p>";
 	//Add recipient

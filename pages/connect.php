@@ -100,8 +100,19 @@
 
     function newSend($cancellation_number){
       global $newString;
-      sendEmail($_GET['email'], "Thank You for reserving a seat at {$_GET['time']} on " . getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2] 
-    . ". Your Cancellation Code is: {$cancellation_number}");
+      $date_info = getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2];
+      $table_type = explode(",", $_GET["table"])[0];
+
+      sendEmail($_GET['email'], "<div style='width:100%; text-align:center;'><p>Thank You for reserving a seat at {$_GET['time']} on " . getMonth($newString[0]) . " " . $newString[1] . ", " . $newString[2] 
+    . ".</p></div> <br> <p>Your Current Info:</p> <ul><li>Cancellation Code: {$cancellation_number}</li>
+    <li>First Name: {$_GET['fn']}</li>
+    <li>Last Name: {$_GET['ln']}</li>
+    <li>Email: {$_GET['email']}</li>
+    <li>Table Type: {$table_type}</li>
+    <li>Date: {$date_info}</li>
+    <li>Time: {$_GET['time']}</li>
+    <li>Cancellation Code: {$cancellation_number}</li>
+    </ul>");
     }
 
     function generate_cancel_code(){

@@ -10,6 +10,8 @@
   $show_time = true;
   $show_tables = true;
 
+  session_start();
+
   $obj = new sql4();
   $associative_arr = [];
   $obj->mysql_conn();
@@ -154,6 +156,19 @@
   </div>
 
   <script src="./jquery_funcs.js"></script>
+  <?php 
+    if(isset($_SESSION["invalid_entry"])){
+  ?>
+    <script>
+      const error = document.getElementsByClassName("space")[6];
+      error.textContent = "The entered email is currently being used";
+    </script>
+  <?php
+    }else{
+      session_unset();
+      session_destroy();
+    }
+  ?>
   <script src="../index.js"></script>
   <script src="./logOut.js"></script>
 </body>
