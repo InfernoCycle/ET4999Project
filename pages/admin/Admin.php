@@ -1,5 +1,10 @@
 <?php 
-
+  if(isset($_POST['fn'])){
+    echo "<h1>THE ONE WHO LURKS EXIST</h1>";
+  }else{
+    echo "<h1>DOESN'T EXIST</h1>";
+  }
+  unset($_POST['fn']);
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +49,7 @@
           <a href="../about.html">About</a>
       </nav>
     </div>
-    <form id="admin_form" class="custom_form" action="status.php" method="POST">
+    <form id="admin_form" class="custom_form" action="Admin.php" method="POST">
       <fieldset id="status_fieldset">
         <legend style="padding:10px; font-weight: bolder; font-size:35px">Staff-In</legend>
         
@@ -72,7 +77,7 @@
         <input placeholder="123456" type="text" maxlength="6" name="employee_id" required="true">
         <p class="innerSpace"><br></p>
 
-        <button name="submit_btn" id="employee_submit" type="button" value="Submit">Login</button>
+        <button name="submit_btn" id="employee_submit" type="submit" value="Submit">Login</button>
 
         <p class="space"></p>
 

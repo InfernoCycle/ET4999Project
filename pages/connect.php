@@ -72,8 +72,8 @@
       $rand_number = $this->generate_cancel_code();
 
       //insert given credentials from user's entry in form into database
-      $query = "INSERT INTO users(first_name, last_name, email, cancel_id, table_id) 
-      VALUES('{$_GET['fn']}', '{$_GET['ln']}', '{$_GET['email']}', {$rand_number}, {$table_id});";
+      $query = "INSERT INTO users(first_name, last_name, email, cancel_id, table_id, is_in) 
+      VALUES('{$_GET['fn']}', '{$_GET['ln']}', '{$_GET['email']}', {$rand_number}, {$table_id}, 0);";
 
       if($conn){
         mysqli_query($conn, $query);
