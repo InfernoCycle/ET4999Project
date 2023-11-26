@@ -11,20 +11,24 @@
 
   //check if waiter confirmed registration. if not and 15 minutes passed then remove registration
   $result = $obj->any("SELECT user_id, is_in FROM users;");
-  $res_array = mysqli_fetch_array($result);
+  $res_array = mysqli_fetch_all($result);
   
   $delete_limit = -15; //minutes after reservation has gone unchecked
   $stay_limit = -90; //minutes after reservation and sit down time
 
-  while($res_array != null){
-    $res_array = mysqli_fetch_array($result);
-    if($res_array == null){
+  $count = 0;
+
+  while($count < count($res_array)){
+    //$res_array = mysqli_fetch_array($result);
+    /*if($res_array == null){
       break;
-    }
-    $inner_res = mysqli_fetch_array($obj->any("SELECT reserved_time, reserved_date FROM reservations WHERE user_id={$res_array['user_id']};"));
+    }*/
+    $inner_res = mysqli_fetch_array($obj->any("SELECT reserved_time, reserved_date FROM reservations WHERE user_id={$res_array[$count][0]};"));
     if($inner_res == null){
+      $count+=1;
       continue;
     }
+    
     $formatted_date = explode("/", $inner_res["reserved_date"]);
     $month = $formatted_date[0];
     $day = $formatted_date[1];
@@ -48,16 +52,16 @@
     //convert difference(ms) to mins
     $difference_to_mins = ($difference/60);
 
-    if($difference_to_mins <= $delete_limit && $res_array['is_in'] == 0){
+    if($difference_to_mins <= $delete_limit && $res_array[$count][1] == 0){
       //$obj->removeUser($res_array['user_id']);
-      echo "Bruh<br>";
+      //echo "Bruh<br>";
     }
     if($difference_to_mins <= $stay_limit){
-      //$obj->removeUser($res_array['user_id']);
+      $obj->removeUser($res_array[$count][0]);
       echo "Get Out of My Restaurant<br>";
     }
-    echo $difference_to_mins . "<br>";
-
+    //echo $difference_to_mins . "<br>";
+    $count+=1;
     //echo date_timestamp_get($date) . " 'User Time' <br>";
     //echo $res_array['is_in'];
   }

@@ -959,3 +959,18 @@ fieldset button:hover{
         border-radius: 0px 10px 0px 0px;
     }
 }
+
+/*check-in*/
+#table_in_form{
+    margin:0px 5% 0px 5%;
+    text-align: center;
+}
+.employee_submits{
+    padding:5px;
+    cursor:pointer;
+}
+.employee_forms_labels{
+    color:white;
+    font-weight: bolder;
+    font-size:20px;
+}

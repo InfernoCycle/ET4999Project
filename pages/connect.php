@@ -1,6 +1,9 @@
 <?php 
-  require_once '../lib/email.php';
-  require_once '../lib/utilities.php';
+  /*require_once '../lib/email.php';
+  require_once '../lib/utilities.php';*/
+
+  require_once __DIR__ . "/../lib/email.php";
+  require_once __DIR__ . "/../lib/utilities.php";
   
   //require './confirmed.php';
   

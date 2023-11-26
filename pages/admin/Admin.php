@@ -1,10 +1,7 @@
 <?php 
   if(isset($_POST['fn'])){
-    echo "<h1>THE ONE WHO LURKS EXIST</h1>";
-  }else{
-    echo "<h1>DOESN'T EXIST</h1>";
+    header("Location: ./check_in.php");
   }
-  unset($_POST['fn']);
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +11,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="../index.css">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="../../index.css">
@@ -83,7 +79,6 @@
 
         <p id="error_log"></p>
       </fieldset>
-      
     </form>
     <footer></footer>
     <script src="./jquery_funcs.js"></script>
