@@ -149,7 +149,7 @@ $(document).ready(function(){
       maxMinutes: 30,
       
       interval: 15, // 15 minutes
-      change:function(e){
+      change: function(e){
         const date_value = document.getElementsByName("date");
         if(date_value[0].value != "" && submittable_date){
           let currentTime = new Date();
@@ -185,7 +185,6 @@ $(document).ready(function(){
           error.style.margin="0px";
           error.style.marginBottom="20px";
           error.innerHTML="Please choose a date first";
-          console.log("error checkpoint at timepicker else");
         };
       }
     });
