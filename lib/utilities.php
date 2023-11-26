@@ -2,9 +2,10 @@
   function getMonth($month_int){
     $months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 
     'September', 'October', 'November', 'December'];
-
-    define("trueMonth", $month_int-1);
-    return $months[trueMonth];
+    
+    $month = $month_int-1;
+    //define("trueMonth", $month_int-1);
+    return $months[$month];
   }
   
   function convertDate($date = null){
