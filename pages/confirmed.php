@@ -4,7 +4,7 @@
   require_once '../lib/utilities.php';
   require_once './connect.php';
 
-  error_reporting(E_ERROR | E_PARSE);
+  //error_reporting(E_ERROR | E_PARSE);
 
   $invalid_entry = false;
 
@@ -53,7 +53,7 @@
     if(count($result) != 0){
       $_SESSION["invalid_entry"] = true;
       $obj->close();
-      header("Location: ./reserve.php");
+      //header("Location: ./reserve.php");
     }
     else{
       session_unset();

@@ -133,6 +133,7 @@ $(document).ready(function(){
           error.style.margin="0px";
           error.style.marginBottom="20px";
           error.innerHTML="Please choose a date first";
+          console.log("error checkpoint at timepicker if");
         };
         
       },
@@ -147,7 +148,46 @@ $(document).ready(function(){
       maxTime: '8:30 PM',
       maxMinutes: 30,
       
-      interval: 15 // 15 minutes
+      interval: 15, // 15 minutes
+      change:function(e){
+        const date_value = document.getElementsByName("date");
+        if(date_value[0].value != "" && submittable_date){
+          let currentTime = new Date();
+          let value = document.getElementById("datepicker").value;
+          let userPickArray = splitStrings(value);
+
+          let picked_time = new Date(userPickArray[2], userPickArray[0]-1, userPickArray[1], e.getHours(), e.getMinutes(), e.getSeconds())
+          //console.log(currentTime.getTime());
+          //console.log(picked_time.getTime());
+          let difference_in_minutes = ((currentTime - picked_time)/1000)/60;
+          let difference_in_hours = difference_in_minutes/60;
+          //console.log(difference_in_minutes);
+          //console.log(difference_in_hours);
+
+          let error = document.getElementsByClassName("space")[4];
+
+          if(difference_in_hours > -1){
+            submittable_time = false;
+            error.style.margin="0px";
+            error.style.marginBottom="20px";
+            error.innerHTML="Please choose a time at least a hour before the chosen time";
+            return;
+          }
+
+          submittable_time = true;
+          error.style.margin="0px";
+          error.style.marginBottom="30px";
+          error.innerHTML="";
+          valid_date();
+        }else{
+          let error = document.getElementsByClassName("space")[4];
+          submittable_time = false;
+          error.style.margin="0px";
+          error.style.marginBottom="20px";
+          error.innerHTML="Please choose a date first";
+          console.log("error checkpoint at timepicker else");
+        };
+      }
     });
   }
 })
@@ -251,6 +291,7 @@ function submission(e){
   let ln = inputs.namedItem("ln").value;
   let email = inputs.namedItem("email").value;
 
+  console.log(submittable_time, submittable_date);
   if(submittable_time && submittable_date && (fn!="" && ln!="" && email!="")){
     /*let error = document.getElementsByClassName("space")[4];
         if(TimeWidth > MinTimeDistance){
