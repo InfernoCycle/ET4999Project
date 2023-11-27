@@ -344,6 +344,21 @@ $(document).ready(function(){
   })
 })
 
+var interval = null;
+var count = 15;
+function timer(){
+  interval = setInterval(timer_handler, 1000)
+}
+
+function timer_handler(){
+  if(count == 0){
+    clearInterval(interval);
+    window.location.replace("../index.html");
+  }
+  document.getElementById("count_down").innerText = count.toString();
+  count-=1;
+}
+
 function box_out_body(e){
   const modal = document.getElementsByClassName("modal_cont")[0];
   modal.style.display = "block";
@@ -387,6 +402,7 @@ function close_modal(e){
 
 $(document).ready(function(){
   $(".exit_button").on("click", function(e){
+    clearInterval(interval);
     close_modal(e);
   });
 //block
@@ -400,18 +416,3 @@ $(document).ready(function(){
     cancel_modal.style.display="none";
   });
 })
-
-var interval = null;
-var count = 15;
-function timer(){
-  interval = setInterval(timer_handler, 1000)
-}
-
-function timer_handler(){
-  if(count == 0){
-    clearInterval(interval);
-    window.location.replace("../index.html");
-  }
-  document.getElementById("count_down").innerText = count.toString();
-  count-=1;
-}

@@ -55,7 +55,7 @@
     </form>
     <div class="card">
       <header class="header_cont">
-        <h1 class="header_title">Worldly Bites</h1>
+        <h1 class="header_title">United Tastes</h1>
       </header>
 
       <nav class="nav_cont">

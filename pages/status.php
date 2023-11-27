@@ -2,7 +2,7 @@
   /* check if user reservation is still active. */
   require_once './connect.php';
   require_once '../lib/utilities.php';
-
+  
   $exists = false;
   $invalid_creds = false;
   $fn = null;
@@ -17,7 +17,7 @@
   if(isset($_POST["fn"])){
     $obj = new sql4();
     $obj->mysql_conn();
-    $result = $obj->any("SELECT table_id, user_id FROM users WHERE cancel_id={$_POST["unique_code"]} AND first_name='{$_POST["fn"]}' AND last_name='{$_POST["ln"]}';");
+    $result = $obj->any("SELECT table_id, user_id, email, first_name, last_name FROM users WHERE cancel_id={$_POST["unique_code"]} AND first_name='{$_POST["fn"]}' AND last_name='{$_POST["ln"]}';");
     $obj->close();
 
     $data = mysqli_fetch_array($result);
@@ -40,6 +40,8 @@
       $data_two = mysqli_fetch_row($result2);
       $rsv_time = $data_two[0];
       $rsv_date = $data_two[1];
+
+      sendEmail($data[2], "<p style='text-align:center'>Your reservation was successfully cancelled for {$data[3]} {$data[4]}</p>");
       //echo "<br><h1 style='color:white;'>" . $data_two[] ."</h1>";
       //echo "<br><h1 style='color:white;'>" . implode($data) . " " . camel_case($_POST["fn"]) ."</h1>";
     }
