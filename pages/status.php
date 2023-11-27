@@ -89,8 +89,8 @@
     </nav>
   </div>
   <!-- modal content showing users stuff -->
-  <div id="modal_cont">
-    <div id="exit_div"><button class="exit_button" id="modal_cont_exit">X</button></div>
+  <div class="modal_cont">
+    <div id="exit_div"><button class="exit_button" class="modal_cont_exit">X</button></div>
     <h2 class="modal_info" style="text-align:center;">Registration Status</h2>
     <div id="info_cancel_cont">
       <div id="info_cont">
