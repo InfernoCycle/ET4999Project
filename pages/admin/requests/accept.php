@@ -1,5 +1,6 @@
 <?php 
   require_once '../../connect.php';
+  require_once '../../../lib/email.php';
 
   if(isset($_POST["option"])){
     $obj = new sql4();
@@ -10,6 +11,7 @@
         try{
           $obj->any("UPDATE users SET is_in=1 WHERE user_id={$_POST['option']}");
           echo json_encode(true);
+          sendEmail($_POST["xm99l"], "Your Reservation has been accepted. Thank you for eating at United Tastes.");
         }catch(Exception $e){
           echo json_encode(false);
         }

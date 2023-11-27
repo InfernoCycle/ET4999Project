@@ -123,7 +123,7 @@
       //$random_number = rand(100000, 999999);
       //set a min and max here. the higher the max the more unique codes
       //can be generated
-      $rand_numb = rand(100000, 100100);//min has to be a 6 digit number
+      $rand_numb = rand(100000, 200000);//min has to be a 6 digit number
 
       $query = "SELECT cancel_id FROM users WHERE cancel_id={$rand_numb}";
       
@@ -196,6 +196,45 @@
 
       $query = "UPDATE tables SET available={$new_number} WHERE id={$table_id}";
       $result = $this->any($query);
+    }
+
+    function add_user_none($table_id, $date, $time){
+      $rand_num = $this->generate_cancel_code_WalkIn();
+      $result = $this->any("INSERT INTO users (table_id, is_in, cancel_id) VALUES({$table_id}, 1, {$rand_num});");
+      
+      $query = "SELECT available FROM tables WHERE id={$table_id}";
+      $result = mysqli_fetch_array($this->any($query));
+
+      $new_number = intval($result["available"])-1; //subtract available tables rn
+
+      $query = "UPDATE tables SET available={$new_number} WHERE id={$table_id}";
+      $result = $this->any($query);
+
+      $result = $this->any("SELECT user_id FROM users WHERE cancel_id={$rand_num}");
+      $res = mysqli_fetch_array($result);
+      $nextId = $res[0];
+
+      $query = "INSERT INTO reservations(reserved_time, notify, user_id, reserved_date) 
+      VALUES('{$time}', 0, {$nextId}, '{$date}');";
+      $this->any($query);
+    }
+
+    function generate_cancel_code_WalkIn(){
+      global $conn;
+      //$random_number = rand(100000, 999999);
+      //set a min and max here. the higher the max the more unique codes
+      //can be generated
+      $rand_numb = rand(700000, 999999);//min has to be a 6 digit number
+
+      $query = "SELECT cancel_id FROM users WHERE cancel_id={$rand_numb}";
+      
+      $stuff = mysqli_fetch_all(mysqli_query($conn, $query));
+      
+      if(count($stuff) != 0){
+        return $this->ggenerate_cancel_code_WalkIn();
+      }
+      
+      return $rand_numb;
     }
 
     function close(){

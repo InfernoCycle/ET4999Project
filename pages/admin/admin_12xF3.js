@@ -40,20 +40,20 @@ function close_modal(e){
 }
 
 function box_out_body_cancelModal(e){
-  const modal = document.getElementById("cancel_modal2");
-  modal.style.display = "block";
+  const innerModal = document.getElementById("cancel_modal2");
+  innerModal.style.display = "block";
   
   const body = document.getElementsByTagName("body")[0];
 
   // //Credit to stack user: Samuli Hakoniemi
   //Link: https://stackoverflow.com/questions/45607982/how-to-disable-background-when-modal-window-pops-up
   body.style.pointerEvents = "none";
-  modal.style.pointerEvents = "auto";
+  innerModal.style.pointerEvents = "auto";
 
   const children = body.children;
 
   for(let i = 0; i < children.length; i++){
-    if(children[i] === modal){
+    if(children[i] === innerModal){
       children[i].style.opacity="1";
     }else{
       children[i].style.opacity="0.1";
@@ -62,10 +62,10 @@ function box_out_body_cancelModal(e){
 }
 
 function close_cancel_modal(e){
-  const modal = document.getElementsByClassName("cancel_modal2")[0];
+  const modal = document.getElementById("cancel_modal2");
   modal.style.display = "none";
   
-  const body = document.getElementsByTagName("body")[0];
+  /*const body = document.getElementsByTagName("body")[0];
 
   const children = body.children;
 
@@ -77,7 +77,9 @@ function close_cancel_modal(e){
     }
   }
 
-  body.style.pointerEvents = "auto";
+  body.style.pointerEvents = "auto";*/
+
+  window.location.reload();
 }
 
 $(document).ready(function(){
@@ -100,5 +102,9 @@ $(document).ready(function(){
 
     const modal = document.getElementsByClassName("modal_cont")[0];
     modal.style.pointerEvents = "auto";
+  });
+
+  $(".supplement_ok_close").on("click", function(e){
+    close_cancel_modal();
   });
 })

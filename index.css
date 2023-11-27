@@ -736,12 +736,14 @@ fieldset button:hover{
 }
 
 /*login in stuff*/
-#loggedIn, #loggedOut{
-    display:none;
+#loggedOut{
     width:100%;
     color:orange;
     background-color: rgba(0,0,0,0.7);
     text-align: right;
+}
+#loggedIn{
+    display:none;
 }
 #loggedIn > h2{
     margin-right:10px;
@@ -987,4 +989,12 @@ fieldset button:hover{
 .ok_close_emp_modal{
     cursor:pointer;
     padding:10px;
+}
+#cancel_modal2{
+    position:absolute;
+    margin:20% auto 0% 10%;
+    width:80%;
+}
+.supplement_ok_close{
+    margin-bottom: 10px;
 }

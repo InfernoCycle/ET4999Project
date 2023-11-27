@@ -54,14 +54,6 @@
   <!--C:\Users\ecollege\Downloads\jquery-ui-1.13.2.custom\jquery-ui.js-->
 </head>
 <body>
-  <div id="loggedOut">
-    <a href="register.html"><button>Register</button></a>
-    <a href="loggin.html"><button>Login</button></a>
-  </div>
-  <div id="loggedIn">
-      <h2 style="display:inline-block;" id="username">Null</h2>
-      <button onclick="logout(this)">Log-Out</button>
-  </div>
   <div class="card">
   <header class="header_cont">
     <h1 class="header_title">Worldly Bites</h1>

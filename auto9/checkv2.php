@@ -51,10 +51,9 @@
     $difference = $user_time - $current_time;
     //convert difference(ms) to mins
     $difference_to_mins = ($difference/60);
-
     if($difference_to_mins <= $delete_limit && $res_array[$count][1] == 0){
-      //$obj->removeUser($res_array['user_id']);
-      //echo "Bruh<br>";
+      $obj->removeUser($res_array['user_id']);
+      echo "Bruh<br>";
     }
     if($difference_to_mins <= $stay_limit){
       $obj->removeUser($res_array[$count][0]);
