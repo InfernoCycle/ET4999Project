@@ -5,13 +5,14 @@ const MinTimeDistance = -(60*10); // the difference a reservation time can be su
 var TimeWidth = 0;
 
 let currentYear = new Date().getFullYear().toString();
+
 //You can enter default date closures for your store
 //Format: ["m/mm", "d/dd", "yyyy"]
 //Note: do not add leading 0's
 var closures = [
   ["1","1","2024"],
   ["12","25","2024"],
-  ["10", "29", currentYear],
+  ["10", "29", currentYear], //recommended to hand type the year
 ];
 
 function valid_time(){
@@ -345,8 +346,23 @@ $(document).ready(function(){
   })
 })
 
+var interval = null;
+var count = 15;
+function timer(){
+  interval = setInterval(timer_handler, 1000)
+}
+
+function timer_handler(){
+  if(count == 0){
+    clearInterval(interval);
+    window.location.replace("../index.html");
+  }
+  document.getElementById("count_down").innerText = count.toString();
+  count-=1;
+}
+
 function box_out_body(e){
-  const modal = document.getElementById("modal_cont");
+  const modal = document.getElementsByClassName("modal_cont")[0];
   modal.style.display = "block";
   
   const body = document.getElementsByTagName("body")[0];
@@ -368,7 +384,7 @@ function box_out_body(e){
 }
 
 function close_modal(e){
-  const modal = document.getElementById("modal_cont");
+  const modal = document.getElementsByClassName("modal_cont")[0];
   modal.style.display = "none";
   
   const body = document.getElementsByTagName("body")[0];
@@ -388,6 +404,7 @@ function close_modal(e){
 
 $(document).ready(function(){
   $(".exit_button").on("click", function(e){
+    clearInterval(interval);
     close_modal(e);
   });
 //block
@@ -401,18 +418,3 @@ $(document).ready(function(){
     cancel_modal.style.display="none";
   });
 })
-
-var interval = null;
-var count = 15;
-function timer(){
-  interval = setInterval(timer_handler, 1000)
-}
-
-function timer_handler(){
-  if(count == 0){
-    clearInterval(interval);
-    window.location.replace("../index.html");
-  }
-  document.getElementById("count_down").innerText = count.toString();
-  count-=1;
-}

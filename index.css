@@ -736,12 +736,14 @@ fieldset button:hover{
 }
 
 /*login in stuff*/
-#loggedIn, #loggedOut{
-    display:none;
+#loggedOut{
     width:100%;
     color:orange;
     background-color: rgba(0,0,0,0.7);
     text-align: right;
+}
+#loggedIn{
+    display:none;
 }
 #loggedIn > h2{
     margin-right:10px;
@@ -817,7 +819,7 @@ fieldset button:hover{
     background-color: lightblue;
 }
 
-#modal_cont{
+.modal_cont{
     display:none;
     width:92%;
     margin-left:4%;
@@ -830,7 +832,7 @@ fieldset button:hover{
     text-align: right;
     position:absolute;
 }
-#modal_cont_exit{
+.modal_cont_exit{
     padding:10px;
     cursor:pointer;
     border-radius: 0px 10px 0px 0px;
@@ -864,7 +866,7 @@ fieldset button:hover{
     cursor:pointer;
     border-radius:10px;
 }
-.b_action:hover, #modal_cont_exit:hover{
+.b_action:hover, .modal_cont_exit:hover{
     background-color:lightblue;
 }
 .b_action:nth-child(1){
@@ -915,7 +917,7 @@ fieldset button:hover{
     color:red;
 }
 
-#cancel_modal{
+#cancel_modal,#cancel_modal1, #cancel_modal2{
     display:none;
     text-align: center;
     width:50%;
@@ -949,11 +951,11 @@ fieldset button:hover{
     #info_cont{
         width:100%;
     }
-    #cancel_modal{
+    #cancel_modal, #cancel_modal1, #cancel_modal2{
         text-align: center;
         width:100%;
     }
-    #modal_cont_exit{
+    .modal_cont_exit{
         padding:5px;
         cursor:pointer;
         border-radius: 0px 10px 0px 0px;
@@ -968,9 +970,31 @@ fieldset button:hover{
 .employee_submits{
     padding:5px;
     cursor:pointer;
+    color:white;
+    padding:5px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: rgba(114, 107, 107, 0.3);
+    width:100px;
 }
 .employee_forms_labels{
     color:white;
     font-weight: bolder;
     font-size:20px;
+}
+#availability_table{
+    color:red;
+    width:100%;
+}
+.ok_close_emp_modal{
+    cursor:pointer;
+    padding:10px;
+}
+#cancel_modal2{
+    position:absolute;
+    margin:20% auto 0% 10%;
+    width:80%;
+}
+.supplement_ok_close{
+    margin-bottom: 10px;
 }

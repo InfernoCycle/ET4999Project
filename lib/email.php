@@ -35,7 +35,7 @@
 	//Set gmail password
 		$mail->Password = "sksickrjkyxrnvlj";
 	//Email subject
-		$mail->Subject = "United Taste";
+		$mail->Subject = "United Tastes";
 	//Set sender email
 		$mail->setFrom('theunitedtaste@gmail.com');
 	//Enable HTML
@@ -44,7 +44,7 @@
 		//$mail->addAttachment('img/attachment.png');
 	//Email body
 		$mail->Body = "
-		<h1 style='text-align:center;'>Worldly Bites</h1>
+		<h1 style='text-align:center;'>United Taste</h1>
 		</br>
 		<p>{$message}</p>";
 	//Add recipient

@@ -58,7 +58,7 @@
     else{
       session_unset();
       session_destroy();
-      //$obj->addUser();
+      $obj->addUser();
     }
     $obj->close();
   }

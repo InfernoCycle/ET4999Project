@@ -1,6 +1,25 @@
-<?php 
+<?php
+  require '../connect.php';
+
   if(isset($_POST['fn'])){
-    header("Location: ./check_in.php");
+    session_start();
+    //echo "<h1 style='color:white;'>".$_POST['fn'] . " " . $_POST['ln']."</h1>";
+    $obj = new sql4();
+    $obj->mysql_conn();
+    $result = mysqli_fetch_array($obj->any("SELECT * FROM employee WHERE first_name='{$_POST['fn']}' and last_name='{$_POST['ln']}' and emp_code={$_POST['employee_id']} and store_id='{$_POST['store_id']}';"));
+    $obj->close();
+
+    if($result == null){
+      session_unset();
+      session_destroy();
+    }else{
+      //echo "<h1 style='color:white;'>" . $result['store_id'] . "</h1>";
+      $_SESSION['emp_first_name'] = $_POST['fn'];
+      $_SESSION['emp_last_name'] = $_POST['fn'];
+      $_SESSION['logged'] = true;
+      header("Location: ./check_in.php");
+      exit();
+    }
   }
 ?>
 
@@ -25,17 +44,9 @@
     <!--C:\Users\ecollege\Downloads\jquery-ui-1.13.2.custom\jquery-ui.js-->
   </head>
   <body>
-    <div id="loggedOut">
-      <a href="register.html"><button>Register</button></a>
-      <a href="loggin.html"><button>Login</button></a>
-    </div>
-    <div id="loggedIn">
-        <h2 style="display:inline-block;" id="username">Null</h2>
-        <button onclick="logout(this)">Log-Out</button>
-    </div>
     <div class="card">
       <header class="header_cont">
-        <h1 class="header_title">Worldly Bites</h1>
+        <h1 class="header_title">United Tastes</h1>
       </header>
 
       <nav class="nav_cont">
