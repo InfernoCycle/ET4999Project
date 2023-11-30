@@ -8,6 +8,7 @@
     $obj->mysql_conn();
     
     try{
+      date_default_timezone_set("America/Detroit");
       $date = date("m/d/Y");
       $time = date("h:i A");
       $obj->add_user_none($table_id, $date, $time);

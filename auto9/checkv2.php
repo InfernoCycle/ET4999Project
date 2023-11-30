@@ -52,10 +52,10 @@
     //convert difference(ms) to mins
     $difference_to_mins = ($difference/60);
     if($difference_to_mins <= $delete_limit && $res_array[$count][1] == 0){
-      $obj->removeUser($res_array['user_id']);
+      $obj->removeUser($res_array[$count][0]);
       echo "Bruh<br>";
     }
-    if($difference_to_mins <= $stay_limit){
+    else if($difference_to_mins <= $stay_limit){
       $obj->removeUser($res_array[$count][0]);
       echo "Get Out of My Restaurant<br>";
     }
