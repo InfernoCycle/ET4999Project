@@ -156,6 +156,8 @@
       error.textContent = "The entered email is currently being used";
     </script>
   <?php
+  session_unset();
+  session_destroy();
     }else{
       session_unset();
       session_destroy();

@@ -910,6 +910,10 @@ fieldset button:hover{
         margin-top:3px;
         text-align: center;
     }
+
+    #status_form{
+        width:90%;
+    }
 }
 
 #error_log{
