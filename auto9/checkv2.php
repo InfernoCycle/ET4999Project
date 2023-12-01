@@ -10,11 +10,12 @@
   $current_time = time();
 
   //check if waiter confirmed registration. if not and 15 minutes passed then remove registration
-  $result = $obj->any("SELECT user_id, is_in FROM users;");
+  $result = $obj->any("SELECT user_id, is_in, email FROM users;");
   $res_array = mysqli_fetch_all($result);
   
   $delete_limit = -15; //minutes after reservation has gone unchecked
   $stay_limit = -90; //minutes after reservation and sit down time
+  $reminder_limit = 15; //minutes before reservation
 
   $count = 0;
 
@@ -53,12 +54,15 @@
     $difference_to_mins = ($difference/60);
     if($difference_to_mins <= $delete_limit && $res_array[$count][1] == 0){
       $obj->removeUser($res_array[$count][0]);
-      echo "Bruh<br>";
+      //echo "Bruh<br>";
     }
     else if($difference_to_mins <= $stay_limit){
       $obj->removeUser($res_array[$count][0]);
-      echo "Get Out of My Restaurant<br>";
+      //echo "Get Out of My Restaurant<br>";
     }
+    else if($difference_to_mins <= $reminder_limit){
+      sendEmail($res_array[$count][2], "Reminder That Your Reservation is coming up today at {$inner_res['reserved_time']}");
+    };
     //echo $difference_to_mins . "<br>";
     $count+=1;
     //echo date_timestamp_get($date) . " 'User Time' <br>";
